@@ -176,4 +176,5 @@ int main()
     {
         cout << "The multiplication of these matrices is not possible" << endl;
     }
+    return 0;
 }
