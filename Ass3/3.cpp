@@ -31,6 +31,7 @@ int main()
         cout << "This is NOT a sparse matrix\n";
 
     //DISPLAYING FIRST SPARSE MATRIX
+    cout << "FIRST SPARSE MATRIX" << endl;
     cout << "ROW\t\t\tCOLUMN\t\t\tVALUE\n";
     for (i = 0; i < row1; i++)
     {
@@ -42,6 +43,7 @@ int main()
     }
 
     //FAST TRANSPOSE
+    cout << "FIRST SPARSE MATRIX's TRANSPOSE" << endl;
     cout << "ROW\t\t\tCOLUMN\t\t\tVALUE\n";
     for (i = 0; i < col1; i++)
     {
@@ -66,6 +68,7 @@ int main()
     }
 
     //DISPLAYING SECOND SPARSE MATRIX
+    cout << "SECOND SPARSE MATRIX" << endl;
     cout << "ROW\t\t\tCOLUMN\t\t\tVALUE\n";
     for (i = 0; i < row2; i++)
     {
@@ -75,5 +78,34 @@ int main()
                 cout << i << "\t\t\t" << j << "\t\t\t" << arr2[i][j] << "\n";
         }
     }
+
+    //ADDING TWO SPARSE MATRICES
+    cout << "SUM OF TWO SPARSE MATRIX" << endl;
+    int sum[row1][col1]={0};
+    if(row1==row2 && col1==col2){
+        for (i = 0; i < row1; i++)
+        {
+            for (j = 0; j < col1; j++)
+            {
+                if(arr[i][j]!=0 || arr2[i][j]!=0)
+                    sum[i][j]=arr[i][j]+arr2[i][j];
+            }
+        }
+    }
+    else{
+        cout<<"The addition of these two matrices is not possible. \n";
+    }
+
+    //DISPLAYING SUM OF TWO SPARSE MATRIX
+    cout << "ROW\t\t\tCOLUMN\t\t\tVALUE\n";
+    for (i = 0; i < row1; i++)
+    {
+        for (j = 0; j < col1; j++)
+        {
+            if (sum[i][j] != 0)
+                cout << i << "\t\t\t" << j << "\t\t\t" << sum[i][j] << "\n";
+        }
+    }
+
     return 0;
 }
