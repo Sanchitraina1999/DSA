@@ -5,10 +5,110 @@ Write C++ program using stack to check whether given expression is well parenthe
 #include <iostream>
 #define MAX 100
 using namespace std;
-class STACK{
-    
-}
-int main(){
+class STACK
+{
+private:
+    int top;
+    char arr[MAX];
 
-    return 0;
+public:
+    STACK()
+    {
+        top = -1;
+    }
+    bool isempty();
+    bool isfull();
+    void push(char);
+    char pop();
+    char topelement();
+};
+
+bool STACK::isempty()
+{
+    if (top == -1)
+        return 1;
+    else
+        return 0;
+}
+
+bool STACK::isfull()
+{
+    if (top == MAX - 1)
+        return 1;
+    else
+        return 0;
+}
+
+void STACK::push(char ch)
+{
+    arr[++top] = ch;
+}
+
+char STACK::pop()
+{
+    char etbd;
+    etbd = arr[top];
+    top--;
+    return etbd;
+}
+
+char STACK::topelement()
+{
+    return arr[top];
+}
+int main()
+{
+    STACK s;
+    string expression;
+hell:
+    cout << "Enter the expression you want to check for paranthesized:" << endl;
+    cin >> expression;
+    if (expression[0] == '}' || expression[0] == ')' || expression[0] == ']')
+    {
+        cout << "The expression is not valid\n";
+    }
+    else
+    {
+        int i = 0;
+        while (expression[i] != '\0')
+        {
+            switch (expression[i])
+            {
+            case '(':
+                s.push('(');
+                break;
+            case '[':
+                s.push('[');
+                break;
+            case '{':
+                s.push('{');
+                break;
+            case '}':
+                if (s.topelement() == '{')
+                    s.pop();
+                break;
+            case ']':
+                if (s.topelement() == '[')
+                    s.pop();
+                break;
+            case ')':
+                if (s.topelement() == '(')
+                    s.pop();
+                break;
+            }
+            i++;
+        }
+        if (s.isempty())
+            cout << "WELL PARANTHESIZED" << endl;
+        else
+            cout << "NOT well paranthesized" << endl;
+    }
+    cout << "Do you want to continue: (y/n) " << endl;
+    char yn;
+    cin >> yn;
+    if (yn == 'y')
+        goto hell;
+    else
+        //do nothing
+        return 0;
 }
