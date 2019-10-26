@@ -15,6 +15,7 @@ public:
     int arr[MAX];
     void linearSearch(int, int);
     void sentinelSearch(int, int);
+    void binarySeach(int, int);
 };
 
 void SORT::linearSearch(int n, int find)
@@ -53,6 +54,11 @@ void SORT::sentinelSearch(int n, int find)
         cout << "\nRoll number present";
 }
 
+void SORT::binarySeach(int n, int find)
+{
+    
+}
+
 int main()
 {
     SORT s;
@@ -82,6 +88,11 @@ int main()
         cout << "Enter the roll number you want to find: ";
         cin >> find;
         s.sentinelSearch(n, find);
+        break;
+    case 3:
+        cout << "Enter the roll number you want to find: ";
+        cin >> find;
+        s.binarySeach(n, find);
         break;
     default:
         cout<<"\nWrong choice entered";
