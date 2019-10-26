@@ -102,32 +102,22 @@ label:
     switch (choice)
     {
     case 1:
-    {
         s.get_marks(arr, n);
         s.display(arr, n);
         break;
-    }
     case 2:
-    {
         s.selection_sort(arr, n);
         s.display(arr, n);
         break;
-    }
     case 3:
-    {
         s.bubble_sort(arr, n);
         s.display(arr, n);
         break;
-    }
     case 4:
-    {
         s.display_top5(arr, n);
         break;
-    }
     default:
-    {
         cout << "You have entered a wrong choice \n";
-    }
     }
 
     cout << "Do you want to continue (y/n) \n";
