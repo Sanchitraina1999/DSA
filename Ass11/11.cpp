@@ -16,6 +16,7 @@ public:
     void linearSearch(int, int);
     void sentinelSearch(int, int);
     void binarySearch(int, int);
+    void fibonacciSearch(int, int);
 };
 
 void SEARCH::linearSearch(int n, int find)
@@ -81,6 +82,12 @@ void SEARCH::binarySearch(int n, int find)
         cout << "\nRoll number NOT present";
 }
 
+void SEARCH::fibonacciSearch(int n, int find)
+{
+    sort(arr,arr+n);            //fibonacci search works only for sorted arrays
+        
+}
+
 int main()
 {
     SEARCH s;
@@ -92,7 +99,7 @@ int main()
     {
         cin >> s.arr[i];
     }
-hell:
+up:
     cout << "\nSORTING";
     cout << "\n1. Linear Search";
     cout << "\n2. Sentinel Search";
@@ -116,6 +123,11 @@ hell:
         cin >> find;
         s.binarySearch(n, find);
         break;
+    case 4:
+        cout << "Enter the roll number you want to find: ";
+        cin >> find;
+        s.fibonacciSearch(n, find);
+        break;
     default:
         cout << "\nWrong choice entered";
     }
@@ -123,7 +135,7 @@ hell:
     char yn;
     cin >> yn;
     if (yn == 'y')
-        goto hell;
+        goto up;
     else
         return 0;
 }
