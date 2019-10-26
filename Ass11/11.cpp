@@ -97,14 +97,14 @@ void SEARCH::fibonacciSearch(int n, int find)
     while (fib > 1)
     {
         int i = min(offset + fib2, n - 1);
-        if (arr[i] < x)
+        if (arr[i] < find)
         {
             fib = fib1;
             fib1 = fib2;
             fib2 = fib - fib1;
             offset = i;
         }
-        else if (arr[i] > x)
+        else if (arr[i] > find)
         {
             fib = fib2;
             fib1 = fib1 - fib2;
@@ -112,18 +112,18 @@ void SEARCH::fibonacciSearch(int n, int find)
         }
         else
         {
-            cout << x << " roll number is present at the training program. \n";
+            cout << find << " roll number is present at the training program. \n";
             goto hell;
         }
     }
-    if (fib1 && arr[offset + 1] == x)
+    if (fib1 && arr[offset + 1] == find)
     {
-        cout << x << " roll number is present at the training program. \n";
+        cout << find << " roll number is present at the training program. \n";
         goto hell;
     }
     else
     {
-        cout << x << " roll number is NOT present at the training program. \n";
+        cout << find << " roll number is NOT present at the training program. \n";
     }
 
 hell:
