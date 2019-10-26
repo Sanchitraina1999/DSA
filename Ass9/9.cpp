@@ -23,9 +23,10 @@ public:
 
 void QUEUE::push(int item)
 {
-    if (front == -1){
-        front++;
-        arr[++rear]=item;
+    if (front == -1 || front>rear){
+        front=0;
+        rear=0;
+        arr[rear]=item;
     }
     else if (rear == MAX - 1 || front == rear + 1)
     {
@@ -46,7 +47,7 @@ void QUEUE::pop()
         int item;
         item=arr[front];
         front++;
-        cout<<"\n"<<item<<" was deleted from the front of the queue";
+        cout<<"\n"<<item<<" was deleted from the front of the queue and the new front of the queue is : "<<arr[front];
     }
 }
 
