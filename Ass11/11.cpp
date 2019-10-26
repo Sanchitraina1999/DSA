@@ -85,7 +85,49 @@ void SEARCH::binarySearch(int n, int find)
 void SEARCH::fibonacciSearch(int n, int find)
 {
     sort(arr,arr+n);            //fibonacci search works only for sorted arrays
-        
+    int fib2 = 0, fib1 = 1;
+    int fib = fib1 + fib2;
+    while (fib < n)
+    {
+        fib2 = fib1;
+        fib1 = fib;
+        fib = fib2 + fib1;
+    }
+    int offset = -1;
+    while (fib > 1)
+    {
+        int i = min(offset + fib2, n - 1);
+        if (arr[i] < x)
+        {
+            fib = fib1;
+            fib1 = fib2;
+            fib2 = fib - fib1;
+            offset = i;
+        }
+        else if (arr[i] > x)
+        {
+            fib = fib2;
+            fib1 = fib1 - fib2;
+            fib2 = fib - fib1;
+        }
+        else
+        {
+            cout << x << " roll number is present at the training program. \n";
+            goto hell;
+        }
+    }
+    if (fib1 && arr[offset + 1] == x)
+    {
+        cout << x << " roll number is present at the training program. \n";
+        goto hell;
+    }
+    else
+    {
+        cout << x << " roll number is NOT present at the training program. \n";
+    }
+
+hell:
+    cout << endl;
 }
 
 int main()
