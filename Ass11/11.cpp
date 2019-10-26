@@ -5,20 +5,20 @@ b) Write C++ program to store roll numbers of student array who attended trainin
 Write function for searching whether particular student attended training program or not using
 binary search and Fibonacci search.
 */
-#include <iostream>
+#include <bits/stdc++.h>
 #define MAX 100
 using namespace std;
-class SORT
+class SEARCH
 {
 public:
     int size;
     int arr[MAX];
     void linearSearch(int, int);
     void sentinelSearch(int, int);
-    void binarySeach(int, int);
+    void binarySearch(int, int);
 };
 
-void SORT::linearSearch(int n, int find)
+void SEARCH::linearSearch(int n, int find)
 {
     int flag = 0;
     for (int i = 0; i < n; i++)
@@ -35,11 +35,11 @@ void SORT::linearSearch(int n, int find)
         cout << "\nRoll number NOT present";
 }
 
-void SORT::sentinelSearch(int n, int find)
+void SEARCH::sentinelSearch(int n, int find)
 {
     int index;
-    int last = arr[n-1];
-    arr[n-1] = find;
+    int last = arr[n - 1];
+    arr[n - 1] = find;
     for (int i = 0; i < n; i++)
     {
         if (arr[i] == find)
@@ -48,20 +48,42 @@ void SORT::sentinelSearch(int n, int find)
             break;
         }
     }
-    if (index == n-1 && last!=find)
+    if (index == n - 1 && last != find)
         cout << "\nRoll number NOT present";
     else
         cout << "\nRoll number present";
 }
 
-void SORT::binarySeach(int n, int find)
+void SEARCH::binarySearch(int n, int find)
 {
-    
+    sort(arr,arr+n);            //binary search works only for sorted arrays
+    int first = 0, last = n - 1;
+    int middle = (first + last) / 2;
+    int flag = 0;
+    while (first <= last)
+    {
+        if (arr[middle] == find)
+        {
+            flag = 1;
+            break;
+        }
+        else if(arr[middle]>find){
+            last = middle - 1;
+        }
+        else if(arr[middle]<find){
+            first = middle + 1;
+        }
+        middle = (first + last) / 2;
+    }
+    if(flag==1)
+        cout << "\nRoll number present";
+    else
+        cout << "\nRoll number NOT present";
 }
 
 int main()
 {
-    SORT s;
+    SEARCH s;
     int n, choice, find;
     cout << "Enter the number of students present: ";
     cin >> n;
@@ -70,7 +92,7 @@ int main()
     {
         cin >> s.arr[i];
     }
-    hell:
+hell:
     cout << "\nSORTING";
     cout << "\n1. Linear Search";
     cout << "\n2. Sentinel Search";
@@ -92,15 +114,16 @@ int main()
     case 3:
         cout << "Enter the roll number you want to find: ";
         cin >> find;
-        s.binarySeach(n, find);
+        s.binarySearch(n, find);
         break;
     default:
-        cout<<"\nWrong choice entered";
+        cout << "\nWrong choice entered";
     }
-    cout<<"\nDo you want to continue(y/n): ";
-    char yn;    cin>>yn;
-    if(yn=='y')
+    cout << "\nDo you want to continue(y/n): ";
+    char yn;
+    cin >> yn;
+    if (yn == 'y')
         goto hell;
-    else 
+    else
         return 0;
 }
