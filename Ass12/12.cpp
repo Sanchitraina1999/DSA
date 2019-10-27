@@ -40,26 +40,30 @@ void SORT::get_marks(float arr[], int n)
         cin >> arr[i];
 }
 
-void SORT::selection_sort(float arr[], int n){
-    int i,j,min_index;
-    for(i=0;i<n-1;i++){
-        min_index=i;
-        for(j=i+1;j<n;j++){
-            if(arr[min_index]>arr[j])
-                	min_index=j;
+void SORT::selection_sort(float arr[], int n)
+{
+    int i, j;
+    for (i = 0; i < n - 1; i++)
+    {
+        int min_index = i;
+        for (j = i + 1; j < n; j++)
+        {
+            if (arr[min_index] > arr[j])
+                min_index = j;
         }
-        swap(arr[min_index],arr[i]);
+        swap(arr[min_index], arr[i]);
     }
 }
 
 void SORT::bubble_sort(float arr[], int n)
 {
-    int i,j;
-    for(i=0;i<n-1;i++){
-        for(j=0;j<n-i-1;j++){
-            if(arr[j]>arr[j+1]){
-                swap(arr[j],arr[j+1]);
-            }
+    int i, j;
+    for (i = 0; i < n - 1; i++)
+    {
+        for (j = 0; j < n - i - 1; j++)
+        {
+            if (arr[j] > arr[j + 1])
+                swap(arr[j], arr[j + 1]);
         }
     }
 }
