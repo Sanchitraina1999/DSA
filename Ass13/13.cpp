@@ -79,7 +79,7 @@ void SORT::display(float arr[], int n)
 
 void SORT::display_top5(float arr[], int n)
 {
-    sort(arr, arr + n);
+    quick_sort(arr, 0, n);
     cout << "The top 5 scores are: \n";
     for (i = n - 1; i >= n - 5; i--)
         cout << arr[i] << "  ";
