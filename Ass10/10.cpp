@@ -124,9 +124,7 @@ void DEQUEUE::delqueue_r()
 void DEQUEUE::display()
 {
     if (isEmpty())
-    {
         cout << "Deque is empty";
-    }
     else
     {
         cout << "\nThe deque contains : ";
@@ -154,7 +152,7 @@ bool DEQUEUE::isEmpty()
 }
 bool DEQUEUE::isFull()
 {
-    if ((front == 0 && rear == MAX - 1) || (front > rear))
+    if (front == 0 && rear == MAX - 1|| front==rear+1)
         return 1;
     else
         return 0;
