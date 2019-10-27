@@ -88,29 +88,31 @@ void SEARCH::fibonacciSearch(int n, int find)
 {
     sort(arr, arr + n); //fibonacci search works only for sorted arrays
     int fib2=0,fib1=1;
-    int fib = fib2 + fib1;
+    int fib=fib2+fib1;
     while(fib<n){
         fib2=fib1;
         fib1=fib;
         fib=fib2+fib1;
     }
     int offset=-1;
-    while(fib>1){
-        int i = min(offset+fib2, n-1);
-        if(arr[i]<find){
+    while (fib>1)
+    {
+        int i= min(offset+fib2,n-1);
+        if(arr[i]>find){
+            fib=fib2;
+            fib1=fib1-fib;
+            fib2=fib-fib1;
+        }
+        else if(arr[i]<find){
             fib=fib1;
             fib1=fib2;
             fib2=fib-fib1;
             offset=i;
         }
-        else if(arr[i]>find){
-            fib=fib2;
-            fib1=fib1-fib;
-            fib2=fib-fib1;        }
         else{
             cout << find << " roll number is present at the training program. \n";
             goto hell;
-        }
+        }     
     }
     if(fib2 && arr[offset+1]==find){
         cout << find << " roll number is present at the training program. \n";

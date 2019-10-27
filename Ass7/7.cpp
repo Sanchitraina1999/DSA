@@ -46,7 +46,7 @@ void STACK::push(char ch)
 
 char STACK::pop()
 {
-    char etbd;
+    char etbd; //etbd-element to be deleted
     etbd = arr[top];
     top--;
     return etbd;
@@ -58,9 +58,9 @@ char STACK::topelement()
 }
 int main()
 {
+hell:
     STACK s;
     string expression;
-hell:
     cout << "Enter the expression you want to check for paranthesized:" << endl;
     cin >> expression;
     if (expression[0] == '}' || expression[0] == ')' || expression[0] == ']')
@@ -86,14 +86,26 @@ hell:
             case '}':
                 if (s.topelement() == '{')
                     s.pop();
+                else
+                {
+                    s.push('}');
+                }
                 break;
             case ']':
                 if (s.topelement() == '[')
                     s.pop();
+                else
+                {
+                    s.push(']');
+                }
                 break;
             case ')':
                 if (s.topelement() == '(')
                     s.pop();
+                else
+                {
+                    s.push(')');
+                }
                 break;
             }
             i++;
