@@ -3,97 +3,127 @@ A double-ended queue (deque) is a linear list in which additions and deletions m
 Obtain a data representation mapping a deque into a one-dimensional array. Write C++ program to simulate deque
 with functions to add and delete elements from either end of the deque.
 */
-#include <iostream>
-#define MAX 6
+#include <bits/stdc++.h>
 using namespace std;
+#define MAX 100
 class DEQUEUE
 {
-private:
     int front, rear, arr[MAX];
 
 public:
+    DEQUEUE()
+    {
+        front = rear = -1;
+    }
     void enqueue_f(int);
     void enqueue_r(int);
     void delqueue_f();
     void delqueue_r();
     void display();
-    bool isempty();
-    bool isfull();
+    bool isFull();
+    bool isEmpty();
 };
-
-void DEQUEUE::enqueue_f(int item)
+void DEQUEUE::enqueue_r(int x)
 {
-    if (isfull())
+    if (isFull())
     {
-        cout << "\nDequeue is full";
+        cout << " Overflow\n " << endl;
         return;
     }
+
+    // If queue is initially empty
     if (front == -1)
     {
         front = rear = 0;
     }
-    else if (front == 0)
-    {
-        front = MAX - 1;
-    }
-    else
-        front--;
 
-    arr[front] = item;
-}
+    // rear is at last position of queue
+    else if (rear == MAX - 1)
+        rear = 0;
 
-void DEQUEUE::enqueue_r(int item){
-    if(isfull()){
-        cout<<"\nDequeue is full";
-        return;
-    }
-    if(front==-1){
-        front=rear=0;
-    }
-    else if(rear ==MAX-1 ){
-        rear=0;
-    }
+    // increment rear end by '1'
     else
         rear++;
 
-    arr[rear] = item;
+    // insert current element into Deque
+    arr[rear] = x;
 }
-    
 
-void DEQUEUE::delqueue_f(){
-    if(isempty()){
-        cout<<"\nDequeue is empty";
+void DEQUEUE::enqueue_f(int x)
+{
+    // check whether Deque if  full or not
+    if (isFull())
+    {
+        cout << "Overflow\n"
+             << endl;
+        return;
     }
-    if(front==rear){
-        int item;
-        item=arr[front];
-        front=rear=-1;
+
+    // If queue is initially empty
+    if (front == -1)
+    {
+        front = rear = 0;
+    }
+
+    // front is at first position of queue
+    else if (front == 0)
+        front = MAX - 1;
+
+    else // decrement front end by '1'
+        front--;
+
+    // insert current element into Deque
+    arr[front] = x;
+}
+
+void DEQUEUE::delqueue_f()
+{
+    // check whether Deque is empty or not
+    if (isEmpty())
+    {
+        cout << "Queue Underflow\n"
+             << endl;
+        return;
+    }
+
+    // Deque has only one element
+    if (front == rear)
+    {
+        front = -1;
+        rear = -1;
     }
     else if (front == MAX - 1)
         front = 0;
-    else
-        front++;    
+
+    else // increment front by '1' to remove current
+        // front value from Deque
+        front++;
 }
 
-void DEQUEUE::delqueue_r(){
-    if (isempty())
+void DEQUEUE::delqueue_r()
+{
+    if (isEmpty())
     {
-        cout << "\nDequeue is empty";
+        cout << " Underflow\n"
+             << endl;
+        return;
     }
+
+    // Deque has only one element
     if (front == rear)
     {
-        int item;
-        item = arr[front];
-        front = rear = -1;
+        front = -1;
+        rear = -1;
     }
     else if (rear == 0)
-        rear=MAX-1;
+        rear = MAX - 1;
     else
         rear--;
 }
 
-void DEQUEUE::display(){
-    if (isempty())
+void DEQUEUE::display()
+{
+    if (isEmpty())
     {
         cout << "Deque is empty";
     }
@@ -115,23 +145,20 @@ void DEQUEUE::display(){
         }
     }
 }
-
-bool DEQUEUE::isempty()
+bool DEQUEUE::isEmpty()
 {
     if (front == -1)
         return 1;
     else
         return 0;
 }
-
-bool DEQUEUE ::isfull()
+bool DEQUEUE::isFull()
 {
-    if(front==0 && rear==MAX-1)
+    if ((front == 0 && rear == MAX - 1) || (front > rear))
         return 1;
     else
         return 0;
 }
-
 int main()
 {
     DEQUEUE obj;
@@ -242,5 +269,7 @@ hell:
     if ((opt == 'y') || (opt == 'Y'))
         goto hell;
     else
+        //do nothing
+
         return 0;
 }
