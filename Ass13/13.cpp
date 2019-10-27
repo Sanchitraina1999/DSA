@@ -40,15 +40,20 @@ int SORT::partition(float arr[], int low, int high)
 {
     int i = low, j = high;
     float pivot = arr[low];
-    while (i < j){
-        do{
+    while (i < j)
+    {
+        do
+        {
             i++;
         } while (arr[i] <= pivot);
-        do{
+        do
+        {
             j--;
         } while (arr[j] > pivot);
         if (i < j)
+        {
             swap(arr[i], arr[j]);
+        }
     }
     swap(arr[low], arr[j]);
     return j;
