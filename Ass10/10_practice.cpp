@@ -40,23 +40,78 @@ void DEQUEUE::enqueue_r(int x)
 
 void DEQUEUE::enqueue_f(int x)
 {
-    
+    if (isFull())
+        cout << "\nDeque is full";
+    else if (front == 0)
+            front = MAX - 1;
+    else if (front == -1)
+    {
+        front = rear = 0;
+    }
+    else{
+        front--;
+    }
+    arr[front] = x;
 }
 
 void DEQUEUE::delqueue_f()
 {
-   
+   if(isEmpty()){
+       cout<<"\nDeque is empty";
+   }
+   else if(front==rear){
+       front=rear=-1;
+   }
+   else if(front==MAX-1){
+       front=0;
+   }
+   else{
+       front++;
+   }
 }
 
-void DEQUEUE::delqueue_r()
-{
-    
+void DEQUEUE::delqueue_r(){
+    if (isEmpty())
+    {
+        cout << "\nDeque is empty";
+    }
+    else if (front == rear)
+    {
+        front = rear = -1;
+    }
+    else if (rear == 0)
+    {
+        rear = MAX - 1;
+    }
+    else
+    {
+        rear--;
+    }
 }
 
-void DEQUEUE::display()
-{
-
+void DEQUEUE::display(){
+    if(isEmpty()){
+        cout << "\nDeque is empty";
+    }
+    else{
+        cout<<"\nDeque is: ";
+        if(rear>=front){
+            for(int i=front;i<=rear;i++){
+                cout<<arr[i]<<" ";
+            }
+        }
+        else{
+            for(int i=front;i<MAX;i++){
+                cout << arr[i] << " ";
+            }
+            for (int i = 0; i <= rear; i++)
+            {
+                cout << arr[i] << " ";
+            }
+        }
+    }
 }
+
 bool DEQUEUE::isEmpty()
 {
     if(front==-1)

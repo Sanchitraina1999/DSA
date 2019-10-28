@@ -54,8 +54,7 @@ void DEQUEUE::enqueue_f(int x)
     // check whether Deque if  full or not
     if (isFull())
     {
-        cout << "Overflow\n"
-             << endl;
+        cout << "Overflow\n"<< endl;
         return;
     }
 
@@ -98,6 +97,7 @@ void DEQUEUE::delqueue_f()
     else // increment front by '1' to remove current
         // front value from Deque
         front++;
+
 }
 
 void DEQUEUE::delqueue_r()
