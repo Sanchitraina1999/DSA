@@ -85,8 +85,11 @@ hell:
     default:
         cout << "Wrong choice entered \n";
     }
-    
+    cout << "\nDo you want to continue? (y/n) \n";
+    char y;
+    cin >> y;
+    if (y == 'y')
         goto hell;
-    
+    else   
         return 0;
 }
