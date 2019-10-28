@@ -23,20 +23,39 @@ public:
 
 void QUEUE::push(int item)
 {
-    if((front==0 && rear==MAX-1) || (front==rear+1) ){
+    if(front==0 && rear==MAX-1 ){
         cout<<"\nQueue is full";
     }
-    else if(){
+    else if(front==-1 || front>rear){
+        cout<<"\nQueue was empty. Now pushing to the front of the queue";
+        rear=-1;
+        front=0;
+    }
+    arr[++rear]=item;
+}
 
+void QUEUE::pop(){
+    if(front==-1){
+        cout<<"\nQueue is empty";
+    }
+    else{
+        int item;
+        item=arr[front];
+        front++;
+        cout<<item<<" was deleted from the queue and the new front becomes "<<arr[front];
     }
 }
 
-void QUEUE::pop()
-{
-    
-}
-
-void QUEUE::show(){zz
+void QUEUE::show(){
+    if(front==-1 || front>rear){
+        cout<<"\nQueue is empty";
+    }
+    else{
+        cout<<"\nQueue is : ";
+        for(int i=front;i<=rear;i++){
+            cout<<arr[i]<<" ";
+        }
+    }
        
 }
 int main()
@@ -66,11 +85,8 @@ hell:
     default:
         cout << "Wrong choice entered \n";
     }
-    cout << "\nDo you want to continue? (y/n) \n";
-    char y;
-    cin >> y;
-    if (y == 'y')
+    
         goto hell;
-    else
+    
         return 0;
 }
