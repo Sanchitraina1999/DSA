@@ -23,45 +23,21 @@ public:
 
 void QUEUE::push(int item)
 {
-    if (front == -1 || front>rear){
-        front=0;
-        rear=0;
-        arr[rear]=item;
+    if((front==0 && rear==MAX-1) || (front==rear+1) ){
+        cout<<"\nQueue is full";
     }
-    else if (rear == MAX - 1 || front == rear + 1)
-    {
-        cout << "\nQueue is full";
-    }
-    else
-    {
-        arr[++rear] = item;
+    else if(){
+
     }
 }
 
 void QUEUE::pop()
 {
-    if (front == -1 || front>rear)
-        cout << "\nQueue is empty";
-    else
-    {
-        int item;
-        item=arr[front];
-        front++;
-        cout<<"\n"<<item<<" was deleted from the front of the queue and the new front of the queue is : "<<arr[front];
-    }
+    
 }
 
-void QUEUE::show(){
-    if(front==-1 || front>rear){
-        cout<<"\nQueue is empty";
-    }
-    else{
-        cout<<"\nQueue is: \n";
-        for(int i=front;i<=rear;i++){
-            cout<<arr[i]<<" ";
-        }
-    }
-    
+void QUEUE::show(){zz
+       
 }
 int main()
 {

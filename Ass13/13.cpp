@@ -36,6 +36,16 @@ void SORT::get_marks(float arr[], int n)
         cin >> arr[i];
 }
 
+void SORT::quick_sort(float arr[], int low, int high)
+{
+    if (low < high)
+    {
+        int j = partition(arr, low, high);
+        quick_sort(arr, low, j);
+        quick_sort(arr, j + 1, high);
+    }
+}
+
 int SORT::partition(float arr[], int low, int high)
 {
     int i = low, j = high;
@@ -51,24 +61,11 @@ int SORT::partition(float arr[], int low, int high)
             j--;
         } while (arr[j] > pivot);
         if (i < j)
-        {
             swap(arr[i], arr[j]);
-        }
     }
     swap(arr[low], arr[j]);
     return j;
 }
-
-void SORT::quick_sort(float arr[], int low, int high)
-{
-    if (low < high)
-    {
-        int j = partition(arr, low, high);
-        quick_sort(arr, low, j);
-        quick_sort(arr, j + 1, high);
-    }
-}
-
 void SORT::display(float arr[], int n)
 {
     cout << "The scores are: \n";

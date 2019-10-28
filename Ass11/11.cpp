@@ -58,30 +58,27 @@ void SEARCH::sentinelSearch(int n, int find)
 void SEARCH::binarySearch(int n, int find)
 {
     sort(arr, arr + n); //binary search works only for sorted arrays
-    int first = 0, last = n - 1;
-    int middle = (first + last) / 2;
-    int flag = 0;
-    while (first <= last)
-    {
-        if (arr[middle] == find)
-        {
-            flag = 1;
-            break;
+    int first=0,last=n-1;
+    int middle=(first+last)/2;
+    while(first<=last){
+        if(arr[middle]==find){
+            cout << "\nRoll number present";
+            goto hell;
+        }   
+        else if(arr[middle]<find){
+            first=middle+1;
+        }        
+        else if(arr[middle]>find){
+            last=middle-1;
         }
-        else if (arr[middle] > find)
-        {
-            last = middle - 1;
-        }
-        else if (arr[middle] < find)
-        {
-            first = middle + 1;
-        }
-        middle = (first + last) / 2;
+        middle=(first+last)/2;
     }
-    if (flag == 1)
-        cout << "\nRoll number present";
-    else
+    if(first>last){
         cout << "\nRoll number NOT present";
+        goto hell;
+    }
+    hell:
+        cout<<endl;
 }
 
 void SEARCH::fibonacciSearch(int n, int find)
@@ -95,31 +92,28 @@ void SEARCH::fibonacciSearch(int n, int find)
         fib=fib2+fib1;
     }
     int offset=-1;
-    while (fib>1)
-    {
-        int i= min(offset+fib2,n-1);
-        if(arr[i]>find){
-            fib=fib2;
-            fib1=fib1-fib;
-            fib2=fib-fib1;
-        }
-        else if(arr[i]<find){
+    while(fib>1){
+        int i=min(offset+fib2, n-1);
+        if(arr[i]<find){
             fib=fib1;
             fib1=fib2;
             fib2=fib-fib1;
             offset=i;
         }
+        else if(arr[i]>find){
+            fib=fib2;
+            fib1=fib1-fib;
+            fib2=fib-fib1;
+        }
         else{
             cout << find << " roll number is present at the training program. \n";
             goto hell;
-        }     
+        }
     }
-    if(fib2 && arr[offset+1]==find){
+    if(fib1 && arr[offset+1]==find){
         cout << find << " roll number is present at the training program. \n";
-        goto hell;
-    }
-    else{
-        cout << find << " roll number is NOT present at the training program. \n";
+    }else{
+        cout << find << " roll number is  NOT present at the training program. \n";
     }
     hell:
         cout<<endl;
