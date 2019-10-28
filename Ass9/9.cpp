@@ -25,6 +25,7 @@ void QUEUE::push(int item)
 {
     if(front==0 && rear==MAX-1 ){
         cout<<"\nQueue is full";
+        return;
     }
     else if(front==-1 || front>rear){
         cout<<"\nQueue was empty. Now pushing to the front of the queue";

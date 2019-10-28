@@ -25,7 +25,17 @@ public:
 };
 void DEQUEUE::enqueue_r(int x)
 {
-    
+    if(isFull())
+        cout<<"\nDeque is full";
+    else if(rear==MAX-1)
+        rear=0;
+    else if(front==-1){
+        front=rear=0;
+    }
+    else{
+        rear++;
+    }
+    arr[rear]=x;    
 }
 
 void DEQUEUE::enqueue_f(int x)
@@ -49,12 +59,18 @@ void DEQUEUE::display()
 }
 bool DEQUEUE::isEmpty()
 {
-
+    if(front==-1)
+        return 1;
+    else
+        return 0;    
 }
 
 bool DEQUEUE::isFull()
 {
-    
+    if( (front==0 && rear==MAX-1) || (front==rear+1) )
+        return 1;
+    else
+        return 0;    
 }
 
 int main()
