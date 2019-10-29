@@ -1,5 +1,5 @@
 /*
-    STACK using Linked List
+    QUEUE using Linked List
 */
 #include <iostream>
 using namespace std;
@@ -10,12 +10,12 @@ public:
     node *next;
 };
 
-class STACK
+class QUEUE
 {
     node *head, *tail;
 
 public:
-    STACK()
+    QUEUE()
     {
         head = tail = NULL;
     }
@@ -24,7 +24,7 @@ public:
     void show();
 };
 
-void STACK::push(int item)
+void QUEUE::push(int item)
 {
     node *temp = new node();
     temp->data = item;
@@ -36,43 +36,42 @@ void STACK::push(int item)
     }
     else
     {
-        tail->next = temp;
+        tail -> next = temp;
         tail = tail->next;
     }
 }
 
-void STACK::pop()
+void QUEUE::pop()
 {
     if (head == NULL)
-        cout << "\nSTACK is empty";
+        cout << "\nQUEUE is empty";
     else
     {
         node *temp = head;
-        if (head->next == NULL)
+        if (head == tail)
         {
-            cout << head->data << " deleted from the beginning of the list";
-            head = NULL;
+           cout<<"\n"<<head -> data <<" deleted from the queue and now queue is empty";
+           head = NULL;
+           tail = NULL;
         }
         else
         {
-            while (temp -> next -> next != NULL){
-                temp = temp -> next;
-            }
-            cout<< temp -> next -> data<<" was deleted from the end of the list";
-            temp -> next = NULL;
+            cout << "\n"<< head->data << " deleted from the queue";
+            head = head -> next;
+            cout<<" and new front becomes : "<<head -> data;
         }
     }
     show();
 }
 
-void STACK::show()
+void QUEUE::show()
 {
     node *temp = head;
     if (head == NULL)
-        cout << "\nSTACK is empty";
+        cout << "\nQUEUE is empty";
     else
     {
-        cout << "\nSTACK is : \n";
+        cout << "\nQUEUE is : \n";
         while (temp != NULL)
         {
             cout << temp->data << " ";
@@ -83,28 +82,28 @@ void STACK::show()
 
 int main()
 {
-    STACK s;
+    QUEUE q;
     int choice, n;
     char yn;
 up:
-    cout << "STACK USING LINKED LIST\n";
-    cout << "1. PUSH onto STACK\n";
-    cout << "2. POP from the STACK\n";
-    cout << "3. DISPLAY the STACK\n";
+    cout << "\nQUEUE USING LINKED LIST\n";
+    cout << "1. PUSH onto QUEUE\n";
+    cout << "2. POP from the QUEUE\n";
+    cout << "3. DISPLAY the QUEUE\n";
     cout << "Enter your choice\n";
     cin >> choice;
     switch (choice)
     {
     case 1:
-        cout << "\nEnter number to be pushed into the stack";
+        cout << "\nEnter number to be pushed into the queue";
         cin >> n;
-        s.push(n);
+        q.push(n);
         break;
     case 2:
-        s.pop();
+        q.pop();
         break;
     case 3:
-        s.show();
+        q.show();
         break;
     default:
         cout << "\nYou have entered a wrong choice";
