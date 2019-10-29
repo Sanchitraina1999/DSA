@@ -40,23 +40,23 @@ int main(){
     int choice, n;
     char yn;
 up:
-    cout << "\nQUEUE USING LINKED LIST\n";
-    cout << "1. PUSH onto QUEUE's front\n";
-    cout << "2. PUSH onto QUEUE's back\n";
-    cout << "3. POP from the QUEUE's front\n";
-    cout << "4. POP from the QUEUE's back\n";
-    cout << "5. DISPLAY the QUEUE\n";
+    cout << "\nDEQUEUE USING LINKED LIST\n";
+    cout << "1. PUSH onto DEQUEUE's front\n";
+    cout << "2. PUSH onto DEQUEUE's back\n";
+    cout << "3. POP from the DEQUEUE's front\n";
+    cout << "4. POP from the DEQUEUE's back\n";
+    cout << "5. DISPLAY the DEQUEUE\n";
     cout << "Enter your choice\n";
     cin >> choice;
     switch (choice)
     {
     case 1:
-        cout << "\nEnter number to be pushed into the queue at the front";
+        cout << "\nEnter number to be pushed into the dequeue at the front";
         cin >> n;
         dq.push_front(n);
         break;
     case 2:
-        cout << "\nEnter number to be pushed into the queue at the back";
+        cout << "\nEnter number to be pushed into the dequeue at the back";
         cin >> n;
         dq.push_back(n);
         break;
