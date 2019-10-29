@@ -4,11 +4,12 @@ Operands and operator, both must be single character, Input Postfix expression m
 Only '+', '-', '*' and '/ ' operators are expected.
 */
 #include <iostream>
+#define MAX 50
 using namespace std;
 class stack
 {
 public:
-    char stack_array[50];
+    char stack_array[MAX];
     int top;
     stack()
     {
@@ -44,8 +45,8 @@ public:
     }
 
 private:
-    char infix[50];
-    char postfix[50];
+    char infix[MAX];
+    char postfix[MAX];
 
 public:
     void read()
