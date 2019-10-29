@@ -36,23 +36,84 @@ void DEQUEUE::push_front(int item)
     {
         head = temp;
         tail = temp;
+
+        cout<<head->data<<" inserted to the front of the deque , that was just created\n";
     }
+    else
+    {
+        temp->next = head;
+        head = temp;
+        cout<<head->data<<" inserted to the front of the deque\n";
+    }
+    show();
 }
 
 void DEQUEUE::push_back(int item)
 {
+    node *temp = new node();
+    temp->data = item;
+    temp->next = NULL;
+    if (head == NULL)
+    {
+        head = temp;
+        tail = temp;
+        cout << head->data << " inserted to the back of the deque , that was just created\n";
+    }
+    else
+    {
+        node *temp1 = head;
+        while(temp1->next!=NULL){
+            temp1=temp1->next;
+        }
+        temp1->next=temp;
+        temp->next =NULL;
+    }
+    show();
 }
 
 void DEQUEUE::pop_front()
 {
+    if (head == NULL)
+        cout << "\nDequeue is empty";
+    else{
+        head=head->next;
+    }
+    show();
 }
 
 void DEQUEUE::pop_back()
 {
+    if (head == NULL)
+        cout << "\nDequeue is empty";
+    else{
+        node *temp=head;
+        if(temp->next==NULL){
+            cout<<temp->data<<" was deleted and now queue is empty";
+            head=NULL;
+            tail=NULL;
+        }
+        else{
+            while(temp->next->next!=NULL){
+                temp=temp->next;
+            }
+            temp->next=NULL;
+        }
+    }
+    show();
 }
 
 void DEQUEUE::show()
 {
+    node *temp = head;
+    if(head==NULL)
+        cout<<"\nDequeue is empty";
+    else{
+        cout<<"\nDequeue is :\n";
+        while(temp!=NULL){
+            cout<<temp->data<<" ";
+            temp=temp->next;
+        }
+    }
 }
 int main()
 {
@@ -85,6 +146,7 @@ up:
         break;
     case 4:
         dq.pop_back();
+        break;
     case 5:
         dq.show();
         break;
