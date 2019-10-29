@@ -24,23 +24,23 @@ public:
     char pop()
     {
         if (empty())
-            return ('#'); // Return value '#' indicates stack is empty
+            return '#'; // Return value '#' indicates stack is empty
         else
-            return (stack_array[top--]);
+            return stack_array[top--];
     }
     int empty()
     {
         if (top == -1)
-            return (1);
+            return 1;
         else
-            return (0);
+            return 0;
     }
     int full()
     {
         if (top == 49)
-            return (1);
+            return 1;
         else
-            return (0);
+            return 0;
     }
 
 private:
