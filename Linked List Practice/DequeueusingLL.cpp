@@ -1,17 +1,25 @@
 /*
     DEQUEUE using Linked List
 */
-#include<iostream>
+#include <iostream>
 using namespace std;
-class node{
+class node
+{
+public:
     int data;
     node *next;
 };
 
-class DEQUEUE{
+class DEQUEUE
+{
 private:
-    node *head,*tail;
+    node *head, *tail;
+
 public:
+    DEQUEUE()
+    {
+        head = tail = NULL;
+    }
     void push_front(int);
     void push_back(int);
     void pop_front();
@@ -19,23 +27,35 @@ public:
     void show();
 };
 
-void DEQUEUE::push_front(int item){
-
+void DEQUEUE::push_front(int item)
+{
+    node *temp = new node();
+    temp->data = item;
+    temp->next = NULL;
+    if (head == NULL)
+    {
+        head = temp;
+        tail = temp;
+    }
 }
 
-void DEQUEUE::push_back(int item){
-
+void DEQUEUE::push_back(int item)
+{
 }
 
-void DEQUEUE::pop_front(){
-
+void DEQUEUE::pop_front()
+{
 }
 
-void DEQUEUE::pop_back(){
-
+void DEQUEUE::pop_back()
+{
 }
 
-int main(){
+void DEQUEUE::show()
+{
+}
+int main()
+{
     DEQUEUE dq;
     int choice, n;
     char yn;
