@@ -52,6 +52,21 @@ bool stack::isFull(){
     else
         return 0;
 }
+
+int main()
+{
+    char choice;
+    stack expr;
+up:
+        expr.read();
+        expr.infixToPostfix();
+        cout << "\n\nDo you want to continue ? (y/n): ";
+        cin >> choice;
+    if(choice=='y')
+        goto up;
+    else
+        return 0;
+}
 /*
 #include <iostream>
 #define MAX 50
