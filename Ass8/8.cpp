@@ -5,5 +5,13 @@
  and '/ ' operators are expected.
 */
 #include<iostream>
-
+#define MAX 100
 using namespace std;
+class CONVERT{
+char infix[MAX], postfix[MAX], stack[MAX];
+public:
+    void push(char);
+    bool isEmpty();
+    bool isFull();
+    
+}
