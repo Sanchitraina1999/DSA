@@ -57,7 +57,9 @@ void CONVERT::read(){
 }
 
 void CONVERT::infixToPostfix(){
+    for(int i=0;infix[i]!='\0';i++){
 
+    }
 }
 
 int CONVERT::prior(char symbol){
