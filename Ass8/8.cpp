@@ -153,36 +153,4 @@ up:
         postfix[p] = '\0';
         cout << "\nThe postfix expression is: " << postfix << endl;
     }
-    int prior(char symbol)
-    {
-        switch (symbol)
-        {
-        case '/':
-            return (4);
-        case '*':
-            return (3);
-        case '+':
-            return (2);
-        case '-':
-            return (1);
-        case '(':
-            return (0);
-        default:
-            return (-1);
-        }
-    }
-};
-int main()
-{
-    char choice = 'y';
-    stack expr;
-    while (choice == 'y')
-    {
-        expr.read();
-        expr.ConvertToPostfix();
-        cout << "\n\nDo you want to continue ? (y/n): ";
-        cin >> choice;
-    }
-    return 0;
-}
 */
