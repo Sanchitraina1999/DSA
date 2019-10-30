@@ -70,8 +70,10 @@ int CONVERT::prior(char symbol){
             return 2;
         case '-':
             return 1;
-        case '/':
-            return 4;
+        case '(':
+            return 0;
+        default:
+            return -1;
     }
 }
 
