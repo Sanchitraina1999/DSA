@@ -1,5 +1,5 @@
 /*
-    DEQUEUE using Double Linked List
+    DEQUEUE using Circular Linked List
 */
 #include <iostream>
 using namespace std;
