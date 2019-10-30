@@ -59,13 +59,6 @@ public:
         cout << "\nEnter an infix expression:";
         cin >> infix;
     }
-    int white_space(char symbol)
-    {
-        if (symbol == ' ' || symbol == '\t' || symbol == '\0')
-            return 1;
-        else
-            return 0;
-    }
     void ConvertToPostfix()
     {
         int prev, p;
@@ -73,8 +66,6 @@ public:
         p = 0;
         for (int i = 0; infix[i] != '\0'; i++)
         {
-            if (!white_space(infix[i]))
-            {
                 switch (infix[i])
                 {
                 case '(':
@@ -109,7 +100,6 @@ public:
                     postfix[p++] = infix[i];
                     break;
                 }
-            }
         }
         while (!empty()) //while stack is not empty
             postfix[p++] = pop();
