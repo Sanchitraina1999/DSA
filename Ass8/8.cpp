@@ -53,6 +53,18 @@ bool stack::isFull(){
         return 0;
 }
 
+void stack::read(){
+
+}
+
+int stack::whiteSpace(){
+
+}
+
+void stack::infixToPostfix(){
+    
+}
+
 int main()
 {
     char choice;
