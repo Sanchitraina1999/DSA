@@ -57,9 +57,46 @@ void CONVERT::read(){
 }
 
 void CONVERT::infixToPostfix(){
+    int p=0,entry;
+    char prev;
     for(int i=0;infix[i]!='\0';i++){
-
+        switch(infix[i]){
+            case '(':
+                push(infix[i]);
+                break;
+            case ')':
+                while((prev=pop())!='(')
+                    postfix[p++]=prev;
+                break;
+            case '/':
+            case '*':
+            case '+':
+            case '-':
+            if(!isEmpty()){
+                entry = prior(infix[i]);
+                prev = pop();
+                while (entry <= prior(prev))
+                {
+                    postfix[p++] = prev;
+                    if (isEmpty())
+                        break;
+                    else
+                        prev = pop();
+                }
+                if(entry>prior(prev))
+                    push(prev);
+            }
+                
+                push(infix[i]);
+                break;
+            default:
+                postfix[p++]=infix[i];
+        }
     }
+    while(!isEmpty())
+        postfix[p++]=pop();
+    postfix[p]='\0';
+    cout<<"\nThe postfix expression is: "<<postfix<<endl;
 }
 
 int CONVERT::prior(char symbol){
