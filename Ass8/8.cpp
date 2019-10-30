@@ -29,7 +29,10 @@ void stack::push(char symbol){
 }
 
 char stack::pop(){
-
+    if (isEmpty())
+        return '#';
+    else
+        return stackArray[top--];
 }
 
 bool stack::isEmpty(){
