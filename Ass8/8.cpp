@@ -23,7 +23,7 @@ public:
 };
 
 stack::stack(){
-        top = -1;
+    top = -1;
 }
 
 void stack::push(char symbol){
