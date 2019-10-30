@@ -57,9 +57,46 @@ char STACK::pop(){
 }
 
 void STACK::infixToPostfix(){
+    char prev;
+    int p=0, entry;
     for(int i=0;infix[i]!='\0';i++){
-        
+        switch(infix[i]){
+            case '(':
+                push(infix[i]);
+                break;
+            case ')':
+                while((prev==pop())!='(')
+                    postfix[p++]=prev;
+                break;
+            case '/':
+            case '*':
+            case '+':
+            case '-':
+                if (!isEmpty())
+                {   
+                    entry=prior(infix[i]);
+                    prev=pop();
+                    while(entry<=prior(prev)){
+                        postfix[p++]=prev;
+                        if(!isEmpty())
+                            prev=pop();
+                        else
+                            break;
+                    }
+                    if(entry>prior(prev))
+                        push(prev);
+                }
+                push(infix[i]);
+                break;
+            default:
+                postfix[p++] = entry;
+        }
+
     }
+    while(!isEmpty())
+        postfix[p++] = pop();
+    postfix[p]='\0';
+    cout << "\nThe postfix expression is: " << postfix << endl;
 }
 
 int STACK::prior(char symbol){
