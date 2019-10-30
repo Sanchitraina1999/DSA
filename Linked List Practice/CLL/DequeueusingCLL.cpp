@@ -7,7 +7,7 @@ class node
 {
 public:
     int data;
-    node *next, *prev;
+    node *next;
 };
 
 class DEQUEUE
