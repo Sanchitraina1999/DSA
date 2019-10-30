@@ -74,7 +74,7 @@ int stack::prior(char symbol){
     switch (symbol)
     {
     case '/':
-        return (4);
+        return (4);         //no break reqd as it returns the int value at that time only
     case '*':
         return (3);
     case '+':
