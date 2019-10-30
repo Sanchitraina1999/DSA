@@ -15,6 +15,10 @@ public:
     char pop();
     bool isFull();
     bool isEmpty();
+
+    void read();
+    int whiteSpace();
+    void infixToPostfix();10
 };
 
 stack::stack(){
