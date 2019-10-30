@@ -17,7 +17,7 @@ public:
     bool isEmpty();
 
     void read();
-    int whiteSpace();
+    int whiteSpace(char);
     void infixToPostfix();
 };
 
@@ -54,15 +54,19 @@ bool stack::isFull(){
 }
 
 void stack::read(){
-
+    cout << "\nEnter an infix expression:";
+    cin >> infix;
 }
 
-int stack::whiteSpace(){
-
+int stack::whiteSpace(char symbol){
+    if (symbol == ' ' || symbol == '\t' || symbol == '\0')
+        return 1;
+    else
+        return 0;
 }
 
 void stack::infixToPostfix(){
-    
+
 }
 
 int main()
