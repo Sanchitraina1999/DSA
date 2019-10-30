@@ -1,4 +1,3 @@
-
 /*
  Implement C++ program for expression conversion as infix to postfix and its evaluation
  using stack based on given conditions:  Operands and operator, both must be single
@@ -68,7 +67,7 @@ public:
     }
     void ConvertToPostfix()
     {
-        int prev, p;
+        int entry, p;
         char entry;
         p = 0;
         for (int i = 0; infix[i] != '\0'; i++)
@@ -81,8 +80,8 @@ public:
                     push(infix[i]);
                     break;
                 case ')':
-                    while ((entry = pop()) != '(')
-                        postfix[p++] = entry;
+                    while ((prev = pop()) != '(')
+                        postfix[p++] = prev;
                     break;
                 case '+':
                 case '-':
@@ -90,18 +89,18 @@ public:
                 case '/':
                     if (!empty())
                     {
-                        prev = prior(infix[i]);
-                        entry = pop();
-                        while (prev <= prior(entry))
+                        entry = prior(infix[i]);
+                        prev = pop();
+                        while (entry <= prior(prev))
                         {
-                            postfix[p++] = entry;
+                            postfix[p++] = prev;
                             if (!empty())
-                                entry = pop();
+                                prev = pop();
                             else
                                 break;
                         }
-                        if (prev > prior(entry))
-                            push(entry);
+                        if (entry > prior(prev))
+                            push(prev);
                     }
                     push(infix[i]);
                     break;
