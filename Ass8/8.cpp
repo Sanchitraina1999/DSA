@@ -19,6 +19,7 @@ public:
     void read();
     int whiteSpace(char);
     void infixToPostfix();
+    int prior(char);
 };
 
 stack::stack(){
@@ -69,6 +70,24 @@ void stack::infixToPostfix(){
 
 }
 
+int stack::prior(char symbol){
+    switch (symbol)
+    {
+    case '/':
+        return (4);
+    case '*':
+        return (3);
+    case '+':
+        return (2);
+    case '-':
+        return (1);
+    case '(':
+        return (0);
+    default:
+        return (-1);
+    }
+}
+
 int main()
 {
     char choice;
@@ -84,64 +103,6 @@ up:
         return 0;
 }
 /*
-#include <iostream>
-#define MAX 50
-using namespace std;
-class stack
-{
-public:
-    char stack_array[MAX];
-    int top;
-    stack()
-    {
-        top = -1;
-    }
-    void push(char symbol)
-    {
-        if (full())
-            cout << "\nStack overflow:\n";
-        else
-            stack_array[++top] = symbol;
-    }
-    char pop()
-    {
-        if (empty())
-            return '#'; // Return value '#' indicates stack is empty
-        else
-            return stack_array[top--];
-    }
-    int empty()
-    {
-        if (top == -1)
-            return 1;
-        else
-            return 0;
-    }
-    int full()
-    {
-        if (top == 49)
-            return 1;
-        else
-            return 0;
-    }
-
-private:
-    char infix[MAX];
-    char postfix[MAX];
-
-public:
-    void read()
-    {
-        cout << "\nEnter an infix expression:";
-        cin >> infix;
-    }
-    int white_space(char symbol)
-    {
-        if (symbol == ' ' || symbol == '\t' || symbol == '\0')
-            return 1;
-        else
-            return 0;
-    }
     void ConvertToPostfix()
     {
         int prev, p;
