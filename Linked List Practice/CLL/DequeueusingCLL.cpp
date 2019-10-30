@@ -33,22 +33,18 @@ void DEQUEUE::push_front(int item)
     node *temp = new node();
     temp->data = item;
     temp->next = NULL;
-    temp->prev = NULL;
     if (head == NULL)
     {
         head = temp;
         tail = temp;
         cout<<head->data<<" inserted to the front of the deque , that was just created\n";
         tail -> next = NULL;
-        head -> prev = NULL;
     }
     else
     {
         temp -> next = head;
-        head -> prev = temp;
         head = temp;
         cout<<head->data<<" inserted to the front of the deque\n";
-        head -> prev = NULL;
     }
     show();
 }
@@ -58,19 +54,16 @@ void DEQUEUE::push_back(int item)
     node *temp = new node();
     temp->data = item;
     temp->next = NULL;
-    temp->prev = NULL;
     if (head == NULL)
     {
         head = temp;
         tail = temp;
         cout << head->data << " inserted to the back of the deque , that was just created\n";
-        head -> prev = NULL;
         tail -> next = NULL;
     }
     else
     {
         tail -> next = temp;
-        temp -> prev = tail;
         tail = temp;
         tail -> next = NULL;
     }
@@ -83,7 +76,6 @@ void DEQUEUE::pop_front()
         cout << "\nDequeue is empty";
     else{
         head = head -> next;
-        head -> prev = NULL;
     }
     show();
 }
@@ -93,8 +85,7 @@ void DEQUEUE::pop_back()
     if (head == NULL)
         cout << "\nDequeue is empty";
     else{
-        tail = tail -> prev;
-        tail -> next = NULL;
+        //
     }
     show();
 }
@@ -117,7 +108,6 @@ void DEQUEUE::reverseshow(){
     node *temp=tail;
     while(temp!=NULL){
         cout<<temp->data<<" ";
-        temp = temp -> prev;
     }
 }
 
