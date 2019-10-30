@@ -44,6 +44,18 @@ void CONVERT::push(char symbol){
         stack[++top]=symbol;
 }
 
+char CONVERT::pop(){
+    if(isEmpty())
+        return '#';
+    else
+        return stack[top--];
+}
+
+void CONVERT::read(){
+    cout<<"\nEnter an infix expression: ";
+    cin>>infix;
+}
+
 int main(){
     char choice;
     CONVERT c;
