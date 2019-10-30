@@ -25,7 +25,6 @@ public:
     void pop_front();
     void pop_back();
     void show();
-    void reverseshow();
 };
 
 void DEQUEUE::push_front(int item)
@@ -38,13 +37,14 @@ void DEQUEUE::push_front(int item)
         head = temp;
         tail = temp;
         cout<<head->data<<" inserted to the front of the deque , that was just created\n";
-        tail -> next = NULL;
+        tail -> next = head;
     }
     else
     {
         temp -> next = head;
         head = temp;
         cout<<head->data<<" inserted to the front of the deque\n";
+        tail -> next = head;
     }
     show();
 }
@@ -59,13 +59,13 @@ void DEQUEUE::push_back(int item)
         head = temp;
         tail = temp;
         cout << head->data << " inserted to the back of the deque , that was just created\n";
-        tail -> next = NULL;
+        tail -> next = head;
     }
     else
     {
         tail -> next = temp;
         tail = temp;
-        tail -> next = NULL;
+        tail -> next = head;
     }
     show();
 }
@@ -75,7 +75,15 @@ void DEQUEUE::pop_front()
     if (head == NULL)
         cout << "\nDequeue is empty";
     else{
-        head = head -> next;
+        if (head==tail)                                    //if only one element is present
+        {
+            head = NULL;
+            tail= NULL;
+        }
+        else{
+            head = head->next;
+            tail -> next = head;
+        }
     }
     show();
 }
@@ -85,29 +93,35 @@ void DEQUEUE::pop_back()
     if (head == NULL)
         cout << "\nDequeue is empty";
     else{
-        //
+        node *temp = head;
+        if(head==tail)        //if only one element is present
+        {
+            head=NULL;
+            tail=NULL;
+        }
+        else{                              //more than one elements present 
+            while (temp->next->next != head){
+                temp = temp->next;
+            }
+            tail = temp;
+            tail -> next = head;
+        }
     }
     show();
 }
 
 void DEQUEUE::show()
 {
-    node *temp = head;
+    node *temp = head->next;
     if(head==NULL)
         cout<<"\nDequeue is empty";
     else{
         cout<<"\nDequeue is :\n";
-        while(temp!=NULL){
+        cout<<head->data<<" ";
+        while(temp!=head){
             cout<<temp->data<<" ";
             temp=temp->next;
         }
-    }
-}
-
-void DEQUEUE::reverseshow(){
-    node *temp=tail;
-    while(temp!=NULL){
-        cout<<temp->data<<" ";
     }
 }
 
@@ -123,7 +137,6 @@ up:
     cout << "3. POP from the DEQUEUE's front\n";
     cout << "4. POP from the DEQUEUE's back\n";
     cout << "5. DISPLAY the DEQUEUE\n";
-    cout << "6. REVERSE DISPLAY the DEQUEUE\n";
     cout << "Enter your choice\n";
     cin >> choice;
     switch (choice)
@@ -146,9 +159,6 @@ up:
         break;
     case 5:
         dq.show();
-        break;
-    case 6:
-        dq.reverseshow();
         break;
     default:
         cout << "\nYou have entered a wrong choice";
