@@ -68,7 +68,7 @@ public:
     void ConvertToPostfix()
     {
         int entry, p;
-        char entry;
+        char prev;
         p = 0;
         for (int i = 0; infix[i] != '\0'; i++)
         {
