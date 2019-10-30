@@ -18,7 +18,7 @@ public:
 
     void read();
     int whiteSpace();
-    void infixToPostfix();10
+    void infixToPostfix();
 };
 
 stack::stack(){
