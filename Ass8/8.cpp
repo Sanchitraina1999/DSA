@@ -3,8 +3,7 @@
  using stack based on given conditions:  Operands and operator, both must be single
  character, Input Postfix expression must be in a desired format, Only '+', '-', '*'
  and '/ ' operators are expected.
-
- */
+*/
 
 #include <iostream>
 using namespace std;
@@ -61,25 +60,51 @@ public:
     }
     void ConvertToPostfix()
     {
-        int prev, p;
+        int p=0, prev;
         char entry;
-        p = 0;
-        for (int i = 0; infix[i] != '\0'; i++)
-        {
-                switch (infix[i])
-                {
-                case '(':
-                    push(infix[i]);
-                    break;
-                case ')':
-                    while ((entry = pop()) != '(')
-                        postfix[p++] = entry;
-                    break;
-                case '+':
-                case '-':
-                case '*':
-                case '/':
-                    if (!empty())
+        for(int i=0;infix[i]!='\0';i++){
+            switch (infix[i])
+            {
+            case '(':
+                push(infix[i]);
+                break;
+            case ')':
+                while((entry=pop()) != '(')
+                    postfix[p++]=entry;
+                break;
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+                if(!empty()){
+                    entry=prior(infix[i]);
+                    prev=pop();
+                    while(entry <= prior(prev)){
+                        postfix[p++] = prev;
+                        if(!empty())
+                            entry=pop();
+                        else
+                            break;
+                    }
+                    if (prev > prior(entry))
+                        push(entry);
+                }
+                push(infix[i]);
+                break;
+            default:
+                postfix[p++] = infix[i];
+                break;
+            }
+        }
+        while (!empty()) //while stack is not empty
+            postfix[p++] = pop();
+        postfix[p] = '\0';
+        cout << "\nThe postfix expression is: " << postfix << endl;
+    }
+
+
+   
+                    /*if (!empty())
                     {
                         prev = prior(infix[i]);
                         entry = pop();
@@ -96,16 +121,7 @@ public:
                     }
                     push(infix[i]);
                     break;
-                default:
-                    postfix[p++] = infix[i];
-                    break;
-                }
-        }
-        while (!empty()) //while stack is not empty
-            postfix[p++] = pop();
-        postfix[p] = '\0';
-        cout << "\nThe postfix expression is: " << postfix << endl;
-    }
+                    */
     int prior(char symbol)
     {
         switch (symbol)
