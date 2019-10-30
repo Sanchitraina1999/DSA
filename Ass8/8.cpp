@@ -61,7 +61,18 @@ void CONVERT::infixToPostfix(){
 }
 
 int CONVERT::prior(char symbol){
-
+    switch(symbol){
+        case '/':
+            return 4;
+        case '*':
+            return 3;
+        case '+':
+            return 2;
+        case '-':
+            return 1;
+        case '/':
+            return 4;
+    }
 }
 
 int main(){
