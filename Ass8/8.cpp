@@ -3,6 +3,49 @@ Implement C++ program for expression conversion as infix to postfix and its eval
 Operands and operator, both must be single character, Input Postfix expression must be in a desired format,
 Only '+', '-', '*' and '/ ' operators are expected.
 */
+#include<iostream>
+#define MAX 100
+using namespace std;
+class stack{
+    int top;
+    char stackArray[MAX], infix[MAX], postfix[MAX];
+public:
+    stack();
+    void push(char);
+    char pop();
+    bool isFull();
+    bool isEmpty();
+};
+
+stack::stack(){
+        top = -1;
+}
+
+void stack::push(char symbol){
+    if(isFull())
+        cout<<"\nStack overflow !";
+    else
+        stackArray[++top]==symbol;   
+}
+
+char stack::pop(){
+
+}
+
+bool stack::isEmpty(){
+    if(top==-1)
+        return 1;
+    else
+        return 0;    
+}
+
+bool stack::isFull(){
+    if(top==MAX-1)
+        return 1;
+    else
+        return 0;
+}
+/*
 #include <iostream>
 #define MAX 50
 using namespace std;
@@ -143,3 +186,4 @@ int main()
     }
     return 0;
 }
+*/
