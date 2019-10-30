@@ -56,6 +56,14 @@ void CONVERT::read(){
     cin>>infix;
 }
 
+void CONVERT::infixToPostfix(){
+
+}
+
+int CONVERT::prior(char symbol){
+
+}
+
 int main(){
     char choice;
     CONVERT c;
