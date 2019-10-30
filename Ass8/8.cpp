@@ -3,7 +3,9 @@
  using stack based on given conditions:  Operands and operator, both must be single
  character, Input Postfix expression must be in a desired format, Only '+', '-', '*'
  and '/ ' operators are expected.
-*/
+
+ */
+
 #include <iostream>
 using namespace std;
 class stack
@@ -20,7 +22,10 @@ public:
         if (full())
             cout << "\nStack overflow:\n";
         else
-            stack_array[++top] = symbol;
+        {
+            top++;
+            stack_array[top] = symbol;
+        }
     }
     char pop()
     {
