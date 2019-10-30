@@ -1,108 +1,66 @@
 /*
-Implement C++ program for expression conversion as infix to postfix and its evaluation using stack based on given conditions:
-Operands and operator, both must be single character, Input Postfix expression must be in a desired format,
-Only '+', '-', '*' and '/ ' operators are expected.
+ Implement C++ program for expression conversion as infix to postfix and its evaluation
+ using stack based on given conditions:  Operands and operator, both must be single
+ character, Input Postfix expression must be in a desired format, Only '+', '-', '*'
+ and '/ ' operators are expected.
 */
-#include<iostream>
-#define MAX 100
+#include <iostream>
 using namespace std;
-class stack{
-    int top;
-    char stackArray[MAX], infix[MAX], postfix[MAX];
-public:
-    stack();
-    void push(char);
-    char pop();
-    bool isFull();
-    bool isEmpty();
-
-    void read();
-    int whiteSpace(char);
-    void infixToPostfix();
-    int prior(char);
-};
-
-stack::stack(){
-    top = -1;
-}
-
-void stack::push(char symbol){
-    if(isFull())
-        cout<<"\nStack overflow !";
-    else
-        stackArray[++top]==symbol;   
-}
-
-char stack::pop(){
-    if (isEmpty())
-        return '#';
-    else
-        return stackArray[top--];
-}
-
-bool stack::isEmpty(){
-    if(top==-1)
-        return 1;
-    else
-        return 0;    
-}
-
-bool stack::isFull(){
-    if(top==MAX-1)
-        return 1;
-    else
-        return 0;
-}
-
-void stack::read(){
-    cout << "\nEnter an infix expression:";
-    cin >> infix;
-}
-
-int stack::whiteSpace(char symbol){
-    if (symbol == ' ' || symbol == '\t' || symbol == '\0')
-        return 1;
-    else
-        return 0;
-}
-
-void stack::infixToPostfix(){
-
-}
-
-int stack::prior(char symbol){
-    switch (symbol)
-    {
-    case '/':
-        return (4);         //no break reqd as it returns the int value at that time only
-    case '*':
-        return (3);
-    case '+':
-        return (2);
-    case '-':
-        return (1);
-    case '(':
-        return (0);
-    default:
-        return (-1);
-    }
-}
-
-int main()
+class stack
 {
-    char choice;
-    stack expr;
-up:
-        expr.read();
-        expr.infixToPostfix();
-        cout << "\n\nDo you want to continue ? (y/n): ";
-        cin >> choice;
-    if(choice=='y')
-        goto up;
-    else
-        return 0;
-}
-/*
+public:
+    char stack_array[50];
+    int top;
+    stack()
+    {
+        top = -1;
+    }
+    void push(char symbol)
+    {
+        if (full())
+            cout << "\nStack overflow:\n";
+        else
+            stack_array[++top] = symbol;
+    }
+    char pop()
+    {
+        if (empty())
+            return ('#'); // Return value '#' indicates stack is empty
+        else
+            return (stack_array[top--]);
+    }
+    int empty()
+    {
+        if (top == -1)
+            return (1);
+        else
+            return (0);
+    }
+    int full()
+    {
+        if (top == 49)
+            return (1);
+        else
+            return (0);
+    }
+
+private:
+    char infix[50];
+    char postfix[50];
+
+public:
+    void read()
+    {
+        cout << "\nEnter an infix expression:";
+        cin >> infix;
+    }
+    int white_space(char symbol)
+    {
+        if (symbol == ' ' || symbol == '\t' || symbol == '\0')
+            return 1;
+        else
+            return 0;
+    }
     void ConvertToPostfix()
     {
         int prev, p;
@@ -153,4 +111,35 @@ up:
         postfix[p] = '\0';
         cout << "\nThe postfix expression is: " << postfix << endl;
     }
-*/
+    int prior(char symbol)
+    {
+        switch (symbol)
+        {
+        case '/':
+            return (4);
+        case '*':
+            return (3);
+        case '+':
+            return (2);
+        case '-':
+            return (1);
+        case '(':
+            return (0);
+        default:
+            return (-1);
+        }
+    }
+};
+int main()
+{
+    char choice = 'y';
+    stack expr;
+    while (choice == 'y')
+    {
+        expr.read();
+        expr.ConvertToPostfix();
+        cout << "\n\nDo you want to continue ? (y/n): ";
+        cin >> choice;
+    }
+    return 0;
+}
