@@ -134,11 +134,23 @@ void list::deleteMember(){
 }
 
 void list::deletePresident(){
-
+    if(head==NULL)
+        cout<<"\nNo President is present in list";
+    else{
+        node *temp;
+        if(head->next==NULL){
+            
+        }
+        else{
+            temp = head;
+            head = head->next;
+            cout << temp->name << " has been deleted and new president is : " << head->name << endl;
+        }
+    }
 }
 
 void list::deleteSecretary(){
-
+    
 }
 
 void list::calCount(){
