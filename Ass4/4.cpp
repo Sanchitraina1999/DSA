@@ -130,7 +130,28 @@ void list::addSecretary(int prn, string nm)
 }
 
 void list::deleteMember(){
-
+    if (head == NULL)
+        cout << "\nNo Member is present in list";
+    else
+    {
+        node *temp;
+        if (head->next == NULL)
+        {
+            temp = head;
+            cout << temp->name << " has been deleted and now no Member is present. " << endl;
+            head = NULL;
+            tail = NULL;
+        }
+        else
+        {
+            temp = head;
+            while (temp->next->next->next != NULL)
+                temp = temp->next;
+            temp->next = NULL;
+            tail = temp;
+            cout << temp->name << " has been deleted."<<endl;
+        }
+    }
 }
 
 void list::deletePresident(){
@@ -139,7 +160,10 @@ void list::deletePresident(){
     else{
         node *temp;
         if(head->next==NULL){
-            
+            temp=head;
+            cout << temp->name << " has been deleted and no one is new president "<<endl;
+            head=NULL;
+            tail=NULL;
         }
         else{
             temp = head;
@@ -150,7 +174,28 @@ void list::deletePresident(){
 }
 
 void list::deleteSecretary(){
-    
+    if (head == NULL)
+        cout << "\nNo Secretary is present in list";
+    else
+    {
+        node *temp;
+        if (head->next == NULL)
+        {
+            temp = head;
+            cout << temp->name << " has been deleted and no one is new secretary " << endl;
+            head = NULL;
+            tail = NULL;
+        }
+        else
+        {
+            temp = head;
+            while(temp->next->next!=NULL)
+                temp=temp->next;
+            temp->next=NULL;
+            tail=temp;
+            cout << temp->name << " has been deleted and new president is : " << head->name << endl;
+        }
+    }
 }
 
 void list::calCount(){
@@ -248,8 +293,8 @@ down:
     cout<<"\nDo you want to continue  in the present list (y/n)";
     cin>>yn;
     if(yn=='y' || yn=='Y')
-        goto up;
-    else
         goto down;
+    else
+        goto up;
     return 0;
 }
