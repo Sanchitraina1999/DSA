@@ -171,6 +171,7 @@ int main()
     int prn;
     string nm;
     char yn;
+up:
     cout << "\n Enter your choice for list: ";
     cout << "\n1. List 1";
     cout << "\n2. List 2";
@@ -233,5 +234,8 @@ int main()
     }
     cout<<"\nDo you want to continue  in the present list (y/n)";
     cin>>yn;
-    return 0;
+    if(yn=='y' || yn=='Y')
+        goto up;
+    else
+        return 0;
 }
