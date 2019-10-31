@@ -19,6 +19,7 @@ public:
     int PRN;
     string name;
     node *next;
+    friend class list;
 };
 
 class list
@@ -39,9 +40,14 @@ public:
     void deleteSecretary();
     void calCount();
     void display();
-    void displayReverse();
+    void displayReverse(node *head);
+    node* gethead();
+    friend class node;
 };
-
+node* list::gethead()
+{
+    return head;
+}
 void list::addMember(int prn, string nm)
 {
     node *temp = new node();
@@ -220,20 +226,25 @@ void list::display()
 {
     node *temp = head;
     cout << "\nPresident: ";
-    cout << temp->PRN << " " << temp->name << " " << endl
-         << endl;
-    cout << "\nMembers of the Club are: ";
+    cout << temp->PRN << " " << temp->name << " " << endl<< endl;
+    temp=temp->next;
+    cout << "\nMembers of the Club are: \n";
     while (temp->next != NULL)
     {
         cout << temp->PRN << " " << temp->name << " " << endl;
         temp = temp->next;
     }
     cout << endl;
+    cout << "\nSecretary: ";
     cout << temp->PRN << " " << temp->name << " " << endl;
 }
 
-void list::displayReverse()
+void list::displayReverse(node *p)
 {
+    if(p->next!=NULL)
+        displayReverse(p->next);
+
+    cout<<p->name<<" "<<p->PRN<<" "<<endl;
 }
 
 int main()
@@ -303,7 +314,8 @@ down:
         l->display();
         break;
     case 9:
-        l->displayReverse();
+        l->displayReverse(l->gethead());
+    
         break;
     }
     cout << "\nDo you want to continue  in the present list (y/n)";
