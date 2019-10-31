@@ -92,8 +92,8 @@ void list::addPresident(int prn, string nm)
     }
     else
     {
-        temp->next=head;
-        head=temp;
+        temp->next = head;
+        head = temp;
     }
 }
 
@@ -129,7 +129,8 @@ void list::addSecretary(int prn, string nm)
     }
 }
 
-void list::deleteMember(){
+void list::deleteMember()
+{
     if (head == NULL)
         cout << "\nNo Member is present in list";
     else
@@ -149,23 +150,27 @@ void list::deleteMember(){
                 temp = temp->next;
             temp->next = NULL;
             tail = temp;
-            cout << temp->name << " has been deleted."<<endl;
+            cout << temp->name << " has been deleted." << endl;
         }
     }
 }
 
-void list::deletePresident(){
-    if(head==NULL)
-        cout<<"\nNo President is present in list";
-    else{
+void list::deletePresident()
+{
+    if (head == NULL)
+        cout << "\nNo President is present in list";
+    else
+    {
         node *temp;
-        if(head->next==NULL){
-            temp=head;
-            cout << temp->name << " has been deleted and no one is new president "<<endl;
-            head=NULL;
-            tail=NULL;
+        if (head->next == NULL)
+        {
+            temp = head;
+            cout << temp->name << " has been deleted and no one is new president " << endl;
+            head = NULL;
+            tail = NULL;
         }
-        else{
+        else
+        {
             temp = head;
             head = head->next;
             cout << temp->name << " has been deleted and new president is : " << head->name << endl;
@@ -173,7 +178,8 @@ void list::deletePresident(){
     }
 }
 
-void list::deleteSecretary(){
+void list::deleteSecretary()
+{
     if (head == NULL)
         cout << "\nNo Secretary is present in list";
     else
@@ -189,35 +195,45 @@ void list::deleteSecretary(){
         else
         {
             temp = head;
-            while(temp->next->next!=NULL)
-                temp=temp->next;
-            temp->next=NULL;
-            tail=temp;
+            while (temp->next->next != NULL)
+                temp = temp->next;
+            temp->next = NULL;
+            tail = temp;
             cout << temp->name << " has been deleted and new president is : " << head->name << endl;
         }
     }
 }
 
-void list::calCount(){
-    int count=0;
-    node *temp=head;
-    while(temp!=NULL){
-        temp=temp->next;
+void list::calCount()
+{
+    int count = 0;
+    node *temp = head;
+    while (temp != NULL)
+    {
+        temp = temp->next;
         count++;
     }
-    cout<<"\nTotal number of members are : "<<count<<endl;
+    cout << "\nTotal number of members are : " << count << endl;
 }
 
-void list::display(){
-    node *temp=head;
-    while(temp!=NULL){
-        cout<<temp->PRN<<" "<<temp->name<<" "<<endl;
-        temp=temp->next;
+void list::display()
+{
+    node *temp = head;
+    cout << "\nPresident: ";
+    cout << temp->PRN << " " << temp->name << " " << endl
+         << endl;
+    cout << "\nMembers of the Club are: ";
+    while (temp->next != NULL)
+    {
+        cout << temp->PRN << " " << temp->name << " " << endl;
+        temp = temp->next;
     }
+    cout << endl;
+    cout << temp->PRN << " " << temp->name << " " << endl;
 }
 
-void list::displayReverse(){
-
+void list::displayReverse()
+{
 }
 
 int main()
@@ -290,9 +306,9 @@ down:
         l->displayReverse();
         break;
     }
-    cout<<"\nDo you want to continue  in the present list (y/n)";
-    cin>>yn;
-    if(yn=='y' || yn=='Y')
+    cout << "\nDo you want to continue  in the present list (y/n)";
+    cin >> yn;
+    if (yn == 'y' || yn == 'Y')
         goto down;
     else
         goto up;
