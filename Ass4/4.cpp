@@ -41,10 +41,7 @@ public:
     void display();
     void displayReverse();
 };
-node* list::gethead()
-{
-    return head;
-}
+
 void list::addMember(int prn, string nm)
 {
     node *temp = new node();
