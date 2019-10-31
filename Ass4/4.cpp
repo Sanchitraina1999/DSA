@@ -176,6 +176,7 @@ up:
     cout << "\n1. List 1";
     cout << "\n2. List 2";
     cin >> choice;
+down:
     if (choice == 1)
     {
         l = &l1;
@@ -237,5 +238,6 @@ up:
     if(yn=='y' || yn=='Y')
         goto up;
     else
-        return 0;
+        goto down;
+    return 0;
 }
