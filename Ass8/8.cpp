@@ -86,9 +86,8 @@ void CONVERT::infixToPostfix(){
                 if(entry>prior(prev))
                     push(prev);
             }
-                
-                push(infix[i]);
-                break;
+            push(infix[i]);
+            break;
             default:
                 postfix[p++]=infix[i];
         }
