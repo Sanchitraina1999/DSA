@@ -19,7 +19,6 @@ public:
     int PRN;
     string name;
     node *next;
-    friend class list;
 };
 
 class list
@@ -40,9 +39,7 @@ public:
     void deleteSecretary();
     void calCount();
     void display();
-    void displayReverse(node *head);
-    node* gethead();
-    friend class node;
+    void displayReverse();
 };
 node* list::gethead()
 {
@@ -239,12 +236,8 @@ void list::display()
     cout << temp->PRN << " " << temp->name << " " << endl;
 }
 
-void list::displayReverse(node *p)
-{
-    if(p->next!=NULL)
-        displayReverse(p->next);
+void list::displayReverse(){
 
-    cout<<p->name<<" "<<p->PRN<<" "<<endl;
 }
 
 int main()
@@ -314,7 +307,7 @@ down:
         l->display();
         break;
     case 9:
-        l->displayReverse(l->gethead());
+        l->displayReverse();
     
         break;
     }
