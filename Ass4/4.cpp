@@ -10,6 +10,13 @@ Store student PRN and Name. Write functions to
 . Two linked lists exists for two divisions. Concatenate two lists
 . Sort the singly linked list.
 */
+
+/*
+PENDING:
+        REVERSE DISPLAY
+        CONCATENATION OF TWO LISTS
+        SORT THE LINKED LIST
+*/
 #include <iostream>
 using namespace std;
 
