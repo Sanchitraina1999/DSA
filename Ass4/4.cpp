@@ -14,7 +14,6 @@ Store student PRN and Name. Write functions to
 /*
 PENDING:
         CONCATENATION OF TWO LISTS
-        SORT THE LINKED LIST
 */
 #include <iostream>
 using namespace std;
@@ -154,7 +153,7 @@ void list::deleteMember()
         else
         {
             temp = head;
-            while (temp->next->next->next != NULL)
+            while (temp->next->next != NULL)
                 temp = temp->next;
             temp->next = NULL;
             tail = temp;
@@ -277,11 +276,11 @@ void list::REV(node *t)
     else
     {
         REV(t->next);
-        cout << t->PRN << " " << t->name;
+        cout << t->PRN << " " << t->name<<endl;
     }
 }
 
-void list::sortlist()
+void list::sortlist()                       //only members are sorted, President and Secretary are not sorted
 {
     node *i,*j;
     int prn;
