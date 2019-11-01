@@ -7,9 +7,16 @@ The ticket booking system of Cinemax theater has to be implemented using C++ pro
 
 #include <iostream>
 using namespace std;
+
 class node{
-    
+
 };
+
+class list
+{
+
+};
+
 int main()
 {
 
