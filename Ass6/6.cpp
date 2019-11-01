@@ -60,10 +60,26 @@ void polynomial::input(int n)
 
 void polynomial::output()
 {
+    node *temp=head;
+    if(temp==NULL)
+        cout<<"\nNo polynomial inputed";
+    else{
+        int d=degree;
+        while(temp->next!=head){
+            cout<<temp->value<<"x^"<<d;
+            d--;
+            cout<<"+ ";
+            temp=temp->next;
+        }
+        cout<<temp->value<<"\n";
+    }
 }
 
-void polynomial::eval(int)
+void polynomial::eval(int x)
 {
+    int sum=0;
+    node *temp=head;
+
 }
 
 void polynomial::add(polynomial &p)
