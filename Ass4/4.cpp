@@ -11,10 +11,6 @@ Store student PRN and Name. Write functions to
 . Sort the singly linked list.
 */
 
-/*
-PENDING:
-        CONCATENATION OF TWO LISTS
-*/
 #include <iostream>
 using namespace std;
 
