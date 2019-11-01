@@ -4,3 +4,14 @@ The ticket booking system of Cinemax theater has to be implemented using C++ pro
 . The seats are to be booked 
 . The booking can be cancelled.
 */
+
+#include <iostream>
+using namespace std;
+class node{
+    
+};
+int main()
+{
+
+    return 0;
+}
