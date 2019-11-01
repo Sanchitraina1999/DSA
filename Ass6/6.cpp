@@ -6,6 +6,7 @@ Write a C++ program to realize polynomial equation using circular link list and 
 */
 #include<iostream>
 using namespace std;
+
 class node{
 
 };
