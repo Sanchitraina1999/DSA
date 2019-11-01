@@ -310,9 +310,9 @@ void list::sortlist()
     display();
 }
 
-void list::concatenate(list &l){
+void list::concatenate(list &l1){
     node *temp2=head;
-    node *temp1=l.head;
+    node *temp1=l1.head;
     if(temp1==NULL){
         cout<<"\nList 1 is empty";
         display();
@@ -321,12 +321,12 @@ void list::concatenate(list &l){
     if(temp2==NULL){
         cout << "\nList 2 is empty";
         cout<<"\nDirectly starts from list 1";
-        l.display();
+        l1.display();
         return;
     }
-    while(temp2!=NULL)
+    while(temp2->next!=NULL)
         temp2=temp2->next;
-    temp2->next=temp1;
+    temp2->next=l1.head;
     display();
 }
 
