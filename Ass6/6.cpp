@@ -5,6 +5,7 @@ Write a C++ program to realize polynomial equation using circular link list and 
 . Add two polynomials. 
 */
 #include <iostream>
+#include<math.h>
 using namespace std;
 
 class node
@@ -62,13 +63,13 @@ void polynomial::output()
 {
     node *temp=head;
     if(temp==NULL)
-        cout<<"\nNo polynomial inputed";
+        cout<<"\nNo polynomial inputed (present) ";
     else{
         int d=degree;
         while(temp->next!=head){
             cout<<temp->value<<"x^"<<d;
             d--;
-            cout<<"+ ";
+            cout<<" + ";
             temp=temp->next;
         }
         cout<<temp->value<<"\n";
@@ -79,7 +80,22 @@ void polynomial::eval(int x)
 {
     int sum=0;
     node *temp=head;
-
+    if (temp == NULL)
+        cout << "\nNo polynomial present";
+    else
+    {
+        int d = degree;
+        while (temp->next != head)
+        {
+            sum += ((temp->value)*pow(x,d));
+            d--;
+            temp = temp->next;
+        }
+        sum +=(temp->value);
+        cout << "\nThe value of \n";
+        output();
+        cout<<"at x = "<<x<<" is : "<<sum<<endl;
+    }
 }
 
 void polynomial::add(polynomial &p)
