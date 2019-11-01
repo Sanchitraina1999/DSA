@@ -131,7 +131,7 @@ void polynomial::add(polynomial &p1)
             int d1 = p1.degree, d2 = degree;
             while (d2 < d1)
             {
-                cout<<temp1->value<<" x^"<<d1<<" + "<<endl;
+                cout<<temp1->value<<" x^"<<d1<<" + ";
                 temp1 = temp1->next;
                 d1--;
             }
