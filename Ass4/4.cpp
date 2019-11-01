@@ -202,11 +202,13 @@ void list::deleteSecretary()
         else
         {
             temp = head;
+            node *temp1;
             while (temp->next->next != NULL)
                 temp = temp->next;
+            temp1=temp->next;
             temp->next = NULL;
             tail = temp;
-            cout << temp->name << " has been deleted and new president is : " << head->name << endl;
+            cout << temp1->name << " has been deleted " << endl;
         }
     }
 }
@@ -226,18 +228,30 @@ void list::calCount()
 void list::display()
 {
     node *temp = head;
-    cout << "\nPresident: ";
-    cout << temp->PRN << " " << temp->name << " " << endl<< endl;
-    temp=temp->next;
-    cout << "\nMembers of the Club are: \n";
-    while (temp->next != NULL)
-    {
-        cout << temp->PRN << " " << temp->name << " " << endl;
-        temp = temp->next;
+    if(head==NULL)
+        cout<<"\nNo members present";
+    else{
+        if(head->next==NULL){
+            cout << "\nPresident: ";
+            cout << temp->PRN << " " << temp->name << " " << endl
+                 << endl;
+        }
+        else{
+            cout << "\nPresident: ";
+            cout << temp->PRN << " " << temp->name << " " << endl
+                 << endl;
+            temp = temp->next;
+            cout << "\nMembers of the Club are: \n";
+            while (temp->next != NULL)
+            {
+                cout << temp->PRN << " " << temp->name << " " << endl;
+                temp = temp->next;
+            }
+            cout << endl;
+            cout << "\nSecretary: ";
+            cout << temp->PRN << " " << temp->name << " " << endl;
+        }
     }
-    cout << endl;
-    cout << "\nSecretary: ";
-    cout << temp->PRN << " " << temp->name << " " << endl;
 }
 
 void list::displayReverse(){
