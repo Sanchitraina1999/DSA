@@ -4,6 +4,10 @@ Write a C++ program to realize polynomial equation using circular link list and 
 . Evaluates a polynomial at given value of x 
 . Add two polynomials. 
 */
+
+/*
+    ADD TWO POLYNOMIALS
+*/
 #include <iostream>
 #include<math.h>
 using namespace std;
@@ -148,9 +152,6 @@ down:
         break;
     case 4:
         p2.add(p1);
-        break;
-    case 5:
-        yn = 'n';
         break;
     default:
         cout << "\nNo such option";
