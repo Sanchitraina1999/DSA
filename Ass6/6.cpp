@@ -32,7 +32,7 @@ public:
 };
 
 void polynomial::input(){
-    
+
 }
 
 void polynomial:: output(){
@@ -72,7 +72,7 @@ down:
     switch (choice2)
     {
     case 1:
-        
+        p->input();
         break;
     
     default:
