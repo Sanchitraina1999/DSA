@@ -285,6 +285,7 @@ void list::sortlist()                       //only members are sorted, President
     node *i,*j;
     int prn;
     string nm;
+
     for(i=head->next;i->next->next!=NULL;i=i->next){
         for(j=head->next;j->next->next!=NULL;j=j->next){
             if((j->PRN)>(j->next->PRN)){
@@ -299,7 +300,9 @@ void list::sortlist()                       //only members are sorted, President
             }
         }
     }
+
     cout << "\n List is sorted.";
+    
     display();
 }
 
