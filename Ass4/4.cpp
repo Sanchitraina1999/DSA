@@ -276,33 +276,36 @@ void list::REV(node *t)
     else
     {
         REV(t->next);
-        cout << t->PRN << " " << t->name<<endl;
+        cout << t->PRN << " " << t->name << endl;
     }
 }
 
-void list::sortlist()                       //only members are sorted, President and Secretary are not sorted
+void list::sortlist()
 {
-    node *i,*j;
+    node *i, *j;
     int prn;
     string nm;
 
-    for(i=head->next;i->next->next!=NULL;i=i->next){
-        for(j=head->next;j->next->next!=NULL;j=j->next){
-            if((j->PRN)>(j->next->PRN)){
-                prn=j->PRN;
-                nm=j->name;
+    for (i = head->next; i->next->next != NULL; i = i->next) //only members are sorted, President and Secretary are not sorted
+    {
+        for (j = head->next; j->next->next != NULL; j = j->next)
+        {
+            if ((j->PRN) > (j->next->PRN))
+            {
+                prn = j->PRN;
+                nm = j->name;
 
-                j->PRN=j->next->PRN;
-                j->name=j->next->name;
+                j->PRN = j->next->PRN;
+                j->name = j->next->name;
 
-                j->next->PRN=prn;
-                j->next->name=nm;
+                j->next->PRN = prn;
+                j->next->name = nm;
             }
         }
     }
 
     cout << "\n List is sorted.";
-    
+
     display();
 }
 
@@ -340,7 +343,8 @@ down:
     cout << "\n8. Display All Members";
     cout << "\n9. Display All Members in reverse order";
     cout << "\n10. SORT Members on the basis of PRN";
-    if(choice==2){
+    if (choice == 2)
+    {
         cout << "\n11. CONCATENATE List 2 and 1";
     }
     cin >> choice1;
