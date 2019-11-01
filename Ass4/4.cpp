@@ -283,27 +283,20 @@ void list::REV(node *t)
 
 void list::sortlist()
 {
-    node *i, *j;
+    node *i,*j;
     int prn;
     string nm;
-    if (head == NULL)
-    {
-        cout << "\nList is empty";
-        return;
-    }
-    for (i = head; i->next != NULL; i = i->next)
-    {
-        for (j = head; j->next != NULL; j = j->next)
-        {
-            if ((j->PRN) > (j->next->PRN))
-            {
-                prn = j->PRN;
-                nm = j->name;
-                j->PRN = j->next->PRN;
-                j->name = j->next->name;
+    for(i=head->next;i->next->next!=NULL;i=i->next){
+        for(j=head->next;j->next->next!=NULL;j=j->next){
+            if((j->PRN)>(j->next->PRN)){
+                prn=j->PRN;
+                nm=j->name;
 
-                j->next->PRN = prn;
-                j->next->name = nm;
+                j->PRN=j->next->PRN;
+                j->name=j->next->name;
+
+                j->next->PRN=prn;
+                j->next->name=nm;
             }
         }
     }
