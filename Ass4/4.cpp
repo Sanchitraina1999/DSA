@@ -47,6 +47,7 @@ public:
     bool displayReverse(); //function is only for passing head as argument to recursive function
     void REV(node *t);
     void sortlist();
+    void concatenate(list *l);
 };
 
 void list::addMember(int prn, string nm)
@@ -59,7 +60,7 @@ void list::addMember(int prn, string nm)
     {
         head = temp;
         tail = temp;
-        cout << "This is also the president";
+        cout << "\nThis is also the president and the secretary";
         tail->next = NULL;
     }
     else
@@ -309,6 +310,26 @@ void list::sortlist()
     display();
 }
 
+void list::concatenate(list *l){
+    node *temp2=head;
+    node *temp1=l->head;
+    if(temp1==NULL){
+        cout<<"\nList 1 is empty";
+        display();
+        return;
+    }
+    if(temp2==NULL){
+        cout << "\nList 2 is empty";
+        cout<<"\nDirectly starts from list 1";
+        l->display();
+        return;
+    }
+    while(temp2!=NULL)
+        temp2=temp2->next;
+    temp2->next=temp1;
+    display();
+}
+
 int main()
 {
     list *l;
@@ -343,9 +364,11 @@ down:
     cout << "\n8. Display All Members";
     cout << "\n9. Display All Members in reverse order";
     cout << "\n10. SORT Members on the basis of PRN";
+    if(choice==1)
+        cout<<"\n";
     if (choice == 2)
     {
-        cout << "\n11. CONCATENATE List 2 and 1";
+        cout << "\n11. CONCATENATE List 2 with 1\n";
     }
     cin >> choice1;
     switch (choice1)
@@ -386,6 +409,8 @@ down:
     case 10:
         l->sortlist();
         break;
+    case 11:
+        l->concatenate(&l1);
     }
     cout << "\nDo you want to continue  in the present list (y/n)";
     cin >> yn;
