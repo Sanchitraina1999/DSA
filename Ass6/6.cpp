@@ -81,7 +81,12 @@ down:
         cout<<"\nEnter a value of x for which you want to evaluate the polynomial ";
         cin>>x;
         p->eval(x);
+        break;
+    case 4:
+        p2.add(p1);
+        break;
     default:
+        cout << "\nNo such option";
         break;
     }
     return 0;
