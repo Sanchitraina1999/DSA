@@ -40,7 +40,7 @@ public:
 void polynomial::input(int n)
 {
     int val;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i <= n; i++)
     {
         cout << "Enter the value of the coefficient of the " << (n - i) << " power : ";
         cin >> val;
@@ -102,13 +102,49 @@ void polynomial::eval(int x)
     }
 }
 
-void polynomial::add(polynomial &p)
+void polynomial::add(polynomial &p1)
 {
+    node *temp2=head;
+    node *temp1=p1.head;
+
+    if(degree==0){
+        cout << "\nPolynomial 2 is not inputed\n";
+        p1.output();
+    }
+    else if(p1.degree==0)
+    {
+        cout << "\nPolynomial 1 is not inputed\n";
+        output();
+    }
+    else{
+        if(degree>p1.degree){
+            while (degree > p1.degree)
+            {
+                temp2 = temp2->next;
+            }
+        }
+
+        if (degree < p1.degree)
+        {
+            while (degree < p1.degree)
+            {
+                temp1 = temp1->next;
+            }
+        }
+
+        while(temp1->next != p1.head || temp2 -> next != head ){
+            temp2->value = temp2->value + temp1 -> value;
+            temp1=temp1->next;
+            temp2=temp2->next;
+        }
+
+        output();
+    }
 }
 
 int main()
 {
-    polynomial p1, p2, *p;
+    polynomial p1, p2, *p, psum;
     int choice1, choice2, x;
     char yn;
 up:
@@ -151,7 +187,8 @@ down:
         p->eval(x);
         break;
     case 4:
-        p2.add(p1);
+        psum=p2;
+        psum.add(p1);
         break;
     default:
         cout << "\nNo such option";
