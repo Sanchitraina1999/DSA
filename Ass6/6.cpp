@@ -47,14 +47,14 @@ void polynomial::input(int n)
         {
             head = temp;
             tail = temp;
-            tail->next = head;
         }
         else
         {
             tail->next = temp;
             temp = tail;
-            tail->next = head;
         }
+        
+        tail->next = head;
     }
 }
 
