@@ -34,19 +34,39 @@ public:
 
 void polynomial::input(int n)
 {
-    
+    int val;
+    for (int i = 0; i < n; i++)
+    {
+        cout << "Enter the value of the coefficient of the " << (n - i) << " power : ";
+        cin >> val;
+        node *temp = new node();
+        temp->value = val;
+        temp->next = NULL;
+        if (head == NULL)
+        {
+            head = tail = temp;
+            tail->next = head;
+            cout << head->value << " inserted at beginning\n";
+        }
+        else
+        {
+            tail->next = temp;
+            tail = temp;
+            tail->next = head;
+            cout << tail->value << " inserted at end\n";
+        }
+    }
 }
 
 void polynomial::output()
 {
-    
 }
 
 void polynomial::eval(int)
 {
 }
 
-void polynomial::add(polynomial &)
+void polynomial::add(polynomial &p)
 {
 }
 
@@ -104,11 +124,11 @@ down:
         cout << "\nNo such option";
         break;
     }
-    cout<<"\nDo you want to continue (y/n) : ";
-    cin>>yn;
-    if(yn=='y')
+    cout << "\nDo you want to continue (y/n) : ";
+    cin >> yn;
+    if (yn == 'y')
         goto down;
     else
-        goto up;    
+        goto up;
     return 0;
 }
