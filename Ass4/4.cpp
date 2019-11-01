@@ -337,6 +337,9 @@ down:
     cout << "\n8. Display All Members";
     cout << "\n9. Display All Members in reverse order";
     cout << "\n10. SORT Members on the basis of PRN";
+    if(choice==2){
+        cout << "\n11. CONCATENATE List 2 and 1";
+    }
     cin >> choice1;
     switch (choice1)
     {
