@@ -47,7 +47,7 @@ public:
     bool displayReverse(); //function is only for passing head as argument to recursive function
     void REV(node *t);
     void sortlist();
-    void concatenate(list *l);
+    void concatenate(list &l);
 };
 
 void list::addMember(int prn, string nm)
@@ -310,9 +310,9 @@ void list::sortlist()
     display();
 }
 
-void list::concatenate(list *l){
+void list::concatenate(list &l){
     node *temp2=head;
-    node *temp1=l->head;
+    node *temp1=l.head;
     if(temp1==NULL){
         cout<<"\nList 1 is empty";
         display();
@@ -321,7 +321,7 @@ void list::concatenate(list *l){
     if(temp2==NULL){
         cout << "\nList 2 is empty";
         cout<<"\nDirectly starts from list 1";
-        l->display();
+        l.display();
         return;
     }
     while(temp2!=NULL)
@@ -410,7 +410,7 @@ down:
         l->sortlist();
         break;
     case 11:
-        l->concatenate(&l1);
+        l->concatenate(l1);
     }
     cout << "\nDo you want to continue  in the present list (y/n)";
     cin >> yn;
