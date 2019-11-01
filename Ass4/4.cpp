@@ -264,12 +264,11 @@ bool list::displayReverse(){
 }
 
 void list::REV(node *t){
-    if (t == NULL)
+    if(t==NULL)
         return;
-    else
-    {
+    else{
         REV(t->next);
-        cout << "\nPRN NO:" << t->PRN << " Name: " << t->name;
+        cout<<t->PRN<<" "<<t->name;
     }
 }
 
