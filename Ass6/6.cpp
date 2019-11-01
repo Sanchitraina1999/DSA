@@ -34,53 +34,12 @@ public:
 
 void polynomial::input(int n)
 {
-    int val;
-    node *temp = new node();
-    temp->next=head;
-    for (int i = 0; i < n; i++)
-    {
-        cout << "Enter the value of the coefficient of the " << (n - i) << " power : ";
-        cin >> val;
-        
-        temp->value = val;
-
-        if (head == NULL)
-        {
-            head = temp;
-            tail = temp;
-            cout<<temp->value<<" inserted\n";
-            tail->next=head;
-        }
-        else
-        {
-            tail -> next = temp;
-            tail = temp;
-            cout<<tail->value<<" was inserted\n";
-            tail->next=head;
-        }
-    }
+    
 }
 
 void polynomial::output()
 {
-    node *temp = head->next;
-    if (head == NULL)
-    {
-        cout << "Equation - NULL";
-    }
-    else
-    {
-        int d = degree;
-        cout<<head->value<<"x^"<<d;
-        d--;
-        while (temp != head)
-        {
-            cout<<"+ ";
-            cout << temp->value << "x^" << d;
-            d--;
-            temp = temp->next;
-        }
-    }
+    
 }
 
 void polynomial::eval(int)
