@@ -46,7 +46,8 @@ public:
     void deleteSecretary();
     void calCount();
     void display();
-    void displayReverse();
+    bool displayReverse(); //function is only for passing head as argument to recursive function
+    void REV(node *t);
 };
 
 void list::addMember(int prn, string nm)
@@ -254,8 +255,22 @@ void list::display()
     }
 }
 
-void list::displayReverse(){
+bool list::displayReverse(){
+    if (head == NULL)
+        return false;
+    node *temp = head;
+    REV(temp);
+    return true;
+}
 
+void list::REV(node *t){
+    if (t == NULL)
+        return;
+    else
+    {
+        REV(t->next);
+        cout << "\nPRN NO:" << t->PRN << " Name: " << t->name;
+    }
 }
 
 int main()
