@@ -50,7 +50,7 @@ void polynomial::add(polynomial &){
 int main()
 {
     polynomial p1, p2, *p;
-    int choice1,choice2;
+    int choice1, choice2, x;
 up:
     cout << "\nPolynomial Equation using Circular Linked List";
     cout << "Equation 1";
@@ -75,7 +75,12 @@ down:
         p->input();
         break;
     case 2:
-        p->
+        p->output();
+        break;
+    case 3:
+        cout<<"\nEnter a value of x for which you want to evaluate the polynomial ";
+        cin>>x;
+        p->eval(x);
     default:
         break;
     }
