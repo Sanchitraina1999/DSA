@@ -36,6 +36,7 @@ void polynomial::input(int n)
 {
     int val;
     node *temp = new node();
+    temp->next=head;
     for (int i = 0; i < n; i++)
     {
         cout << "Enter the value of the coefficient of the " << (n - i) << " power : ";
@@ -47,32 +48,36 @@ void polynomial::input(int n)
         {
             head = temp;
             tail = temp;
+            cout<<temp->value<<" inserted\n";
+            tail->next=head;
         }
         else
         {
             tail -> next = temp;
-            temp = tail;
+            tail = temp;
+            cout<<tail->value<<" was inserted\n";
+            tail->next=head;
         }
-
-        tail->next = head;
     }
 }
 
 void polynomial::output()
 {
-    node *temp = head;
+    node *temp = head->next;
     if (head == NULL)
     {
         cout << "Equation - NULL";
     }
     else
     {
+        int d = degree;
+        cout<<head->value<<"x^"<<d;
+        d--;
         while (temp != head)
         {
-            cout << temp->value << "x^" << degree;
-            if (degree != 0)
-                cout << "+ ";
-            degree--;
+            cout<<"+ ";
+            cout << temp->value << "x^" << d;
+            d--;
             temp = temp->next;
         }
     }
@@ -95,7 +100,7 @@ up:
     cout << "\nPolynomial Equation using Circular Linked List";
     cout << "\nEquation 1";
     cout << "\nEquation 2";
-    cout << "\n Enter your choice : ";
+    cout << "\nEnter your choice : ";
     cin >> choice1;
     if (choice1 == 1)
         p = &p1;
