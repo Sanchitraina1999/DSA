@@ -91,7 +91,7 @@ int main()
 {
     polynomial p1, p2, *p;
     int choice1, choice2, x;
-    char yn = 'y';
+    char yn;
 up:
     cout << "\nPolynomial Equation using Circular Linked List";
     cout << "\nEquation 1";
