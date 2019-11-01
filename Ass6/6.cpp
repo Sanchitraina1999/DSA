@@ -118,17 +118,22 @@ void polynomial::add(polynomial &p1)
     }
     else{
         if(degree>p1.degree){
-            while (degree > p1.degree)
+            int d1=p1.degree, d2=degree;
+            while (d2 > d1)
             {
                 temp2 = temp2->next;
+                d2--;
             }
         }
 
         if (degree < p1.degree)
         {
-            while (degree < p1.degree)
+            int d1 = p1.degree, d2 = degree;
+            while (d2 < d1)
             {
+                cout<<temp1->value<<" x^"<<d1<<" + "<<endl;
                 temp1 = temp1->next;
+                d1--;
             }
         }
 
@@ -137,14 +142,14 @@ void polynomial::add(polynomial &p1)
             temp1=temp1->next;
             temp2=temp2->next;
         }
-
+        temp2->value = temp2->value + temp1->value;
         output();
     }
 }
 
 int main()
 {
-    polynomial p1, p2, *p, psum;
+    polynomial p1, p2, *p;
     int choice1, choice2, x;
     char yn;
 up:
@@ -187,8 +192,7 @@ down:
         p->eval(x);
         break;
     case 4:
-        psum=p2;
-        psum.add(p1);
+        p2.add(p1);
         break;
     default:
         cout << "\nNo such option";
