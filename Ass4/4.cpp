@@ -13,7 +13,7 @@ Store student PRN and Name. Write functions to
 
 /*
 PENDING:
-        REVERSE DISPLAY
+        REVERSE DISPLAY USING RECURSION
         CONCATENATION OF TWO LISTS
         SORT THE LINKED LIST
 */
@@ -326,7 +326,6 @@ down:
         break;
     case 9:
         l->displayReverse();
-    
         break;
     }
     cout << "\nDo you want to continue  in the present list (y/n)";
