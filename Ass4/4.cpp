@@ -16,7 +16,7 @@ PENDING:
         CONCATENATION OF TWO LISTS
         SORT THE LINKED LIST
 */
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 class node
@@ -309,7 +309,6 @@ void list::sortlist()
     }
     cout << "\n List is sorted.";
     display();
-}
 }
 
 int main()
