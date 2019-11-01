@@ -11,7 +11,6 @@ class node
 {
 public:
     int value;
-    int power;
     node *next;
 };
 
@@ -32,7 +31,27 @@ public:
 };
 
 void polynomial::input(){
+    int n, val;
+    cout<<"Enter the degree of the polynomial";
+    cin>>n;
+    for(int i=0;i<n;i++){
+        node *temp = new node();
 
+        cout << "Enter the value of the coefficient of the "<< (n-i+1) <<" power : ";
+        cin>>val;
+        temp->value = val;
+
+        if(head==NULL){
+            head=temp;
+            tail=temp;
+            tail->next=head;
+        }
+        else{
+            tail->next=temp;
+            temp=tail;
+            tail->next=head;
+        }
+    }
 }
 
 void polynomial:: output(){
@@ -67,7 +86,10 @@ down:
     cout << "\n1. Input polynomial equation";
     cout << "\n2. Output polynomial equation";
     cout << "\n3. Evaluate the polynomial equation for a given value of x";
-    cout << "\n4. Add two polynomial equation";
+    if (choice1 == 1)
+        cout<<endl;
+    if (choice1 == 2)
+            cout << "\n4. Add two polynomial equation\n";
     cin >> choice2;
     switch (choice2)
     {
