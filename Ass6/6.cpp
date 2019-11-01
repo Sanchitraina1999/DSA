@@ -19,21 +19,21 @@ class polynomial
     node *head, *tail;
 
 public:
+    int degree;
     polynomial()
     {
         head = NULL;
         tail = NULL;
+        degree=0;
     }
-    void input();
+    void input(int);
     void output();
     void eval(int);
     void add(polynomial &);
 };
 
-void polynomial::input(){
-    int n, val;
-    cout<<"Enter the degree of the polynomial";
-    cin>>n;
+void polynomial::input(int n){
+    int val;
     for(int i=0;i<n;i++){
         node *temp = new node();
 
@@ -94,10 +94,15 @@ down:
     switch (choice2)
     {
     case 1:
-        p->input();
+        cout << "Enter the degree of the polynomial";
+        cin >> p->degree;
+        p->input(p->degree);
         break;
     case 2:
-        p->output();
+        if(p->degree==0)
+            cout<<"\nEquation is not inputed";
+        else
+            p->output();
         break;
     case 3:
         cout<<"\nEnter a value of x for which you want to evaluate the polynomial ";
