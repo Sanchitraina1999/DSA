@@ -13,11 +13,10 @@ Store student PRN and Name. Write functions to
 
 /*
 PENDING:
-        REVERSE DISPLAY USING RECURSION
         CONCATENATION OF TWO LISTS
         SORT THE LINKED LIST
 */
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 class node
@@ -48,6 +47,7 @@ public:
     void display();
     bool displayReverse(); //function is only for passing head as argument to recursive function
     void REV(node *t);
+    void sortlist();
 };
 
 void list::addMember(int prn, string nm)
@@ -206,7 +206,7 @@ void list::deleteSecretary()
             node *temp1;
             while (temp->next->next != NULL)
                 temp = temp->next;
-            temp1=temp->next;
+            temp1 = temp->next;
             temp->next = NULL;
             tail = temp;
             cout << temp1->name << " has been deleted " << endl;
@@ -229,15 +229,18 @@ void list::calCount()
 void list::display()
 {
     node *temp = head;
-    if(head==NULL)
-        cout<<"\nNo members present";
-    else{
-        if(head->next==NULL){
+    if (head == NULL)
+        cout << "\nNo members present";
+    else
+    {
+        if (head->next == NULL)
+        {
             cout << "\nPresident: ";
             cout << temp->PRN << " " << temp->name << " " << endl
                  << endl;
         }
-        else{
+        else
+        {
             cout << "\nPresident: ";
             cout << temp->PRN << " " << temp->name << " " << endl
                  << endl;
@@ -255,21 +258,58 @@ void list::display()
     }
 }
 
-bool list::displayReverse(){
+bool list::displayReverse()
+{
     if (head == NULL)
+    {
+        cout << "\nNo members present";
         return false;
+    }
     node *temp = head;
     REV(temp);
     return true;
 }
 
-void list::REV(node *t){
-    if(t==NULL)
-        return;
-    else{
+void list::REV(node *t)
+{
+    if (t == NULL)
+        return; //returns the data from the "EXECUTION STACK"
+    else
+    {
         REV(t->next);
-        cout<<t->PRN<<" "<<t->name;
+        cout << t->PRN << " " << t->name;
     }
+}
+
+void list::sortlist()
+{
+    node *i, *j;
+    int prn;
+    string nm;
+    if (head == NULL)
+    {
+        cout << "\nList is empty";
+        return;
+    }
+    for (i = head; i->next != NULL; i = i->next)
+    {
+        for (j = head; j->next != NULL; j = j->next)
+        {
+            if ((j->PRN) > (j->next->PRN))
+            {
+                prn = j->PRN;
+                nm = j->name;
+                j->PRN = j->next->PRN;
+                j->name = j->next->name;
+
+                j->next->PRN = prn;
+                j->next->name = nm;
+            }
+        }
+    }
+    cout << "\n List is sorted.";
+    display();
+}
 }
 
 int main()
@@ -305,6 +345,7 @@ down:
     cout << "\n7. Calculate Number of Members";
     cout << "\n8. Display All Members";
     cout << "\n9. Display All Members in reverse order";
+    cout << "\n10. SORT Members on the basis of PRN";
     cin >> choice1;
     switch (choice1)
     {
@@ -340,6 +381,9 @@ down:
         break;
     case 9:
         l->displayReverse();
+        break;
+    case 10:
+        l->sortlist();
         break;
     }
     cout << "\nDo you want to continue  in the present list (y/n)";
