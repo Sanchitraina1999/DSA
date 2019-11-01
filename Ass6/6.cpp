@@ -67,12 +67,11 @@ void polynomial::output()
     }
     else
     {
-        int i = degree;
         while (temp != head)
         {
             cout << temp->value << "x^" << degree;
             if (degree != 0)
-                cout << "+";
+                cout << "+ ";
             degree--;
             temp = temp->next;
         }
