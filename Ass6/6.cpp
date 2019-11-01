@@ -74,7 +74,8 @@ down:
     case 1:
         p->input();
         break;
-    
+    case 2:
+        p->
     default:
         break;
     }
