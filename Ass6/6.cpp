@@ -50,10 +50,10 @@ void polynomial::input(int n)
         }
         else
         {
-            tail->next = temp;
+            tail -> next = temp;
             temp = tail;
         }
-        
+
         tail->next = head;
     }
 }
