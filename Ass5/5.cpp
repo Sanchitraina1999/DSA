@@ -8,6 +8,7 @@ On demand
 . The booking can be cancelled.
 */
 #include<iostream>
+#include<iomanip>
 using namespace std;
 
 class node{
@@ -63,9 +64,29 @@ public:
 };
 
 void TICKET::available(){
-    cout<<"ROW/COL";
-    for(int j=0;j<7;j++)
-        
+    cout << setw(23) << "ROW/COL";
+    for (int i = 0; i < 7; i++)
+        cout << setw(8) << "col" << setw(2) << i;
+    cout << endl;
+
+    for(int i=0;i<10;i++){
+        node *temp = head[i];
+        cout << setw(20) << "ROW -" << setw(3) << i;
+        while (temp->next != head[i])
+        {
+            if (temp->booking == true)
+                cout << setw(10) << "A |";
+            else
+                cout << setw(10) << "N/A |";
+            temp = temp->next;
+        }
+
+        if (temp->booking == true)
+            cout << setw(10) << "A |";
+        else
+            cout << setw(10) << "N/A |";
+        cout << endl;
+    }
 }
 
 void TICKET::book(){
