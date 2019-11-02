@@ -60,7 +60,7 @@ public:
 };
 
 void TICKET::available(){
-
+    
 }
 
 void TICKET::book(){
