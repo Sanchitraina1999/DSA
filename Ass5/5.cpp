@@ -52,7 +52,7 @@ public:
                     temp1->next=temp;
                     temp->prev = temp1;
                     temp->next=head[i];
-                    temp=tail[i];
+                    tail[i]=temp;
                     head[i]->prev=tail[i];
                 }
                 
