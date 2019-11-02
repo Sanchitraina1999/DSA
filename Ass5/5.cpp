@@ -14,6 +14,9 @@ class node{
 public:
     bool booking;
     node *next, *prev;
+    node(){
+        booking=false;
+    }
 };
 
 class TICKET{
@@ -60,15 +63,59 @@ public:
 };
 
 void TICKET::available(){
-    
+
 }
 
 void TICKET::book(){
+    int row,col;
 
+    cout << "Enter the Row : ";
+    cin >> row;
+    cout << "Enter the column :";
+    cin >> col;
+    if (row > 9 || col > 6)
+    {
+        cout << "\nInvalid Choice." << endl <<endl;
+        return;
+    }
+
+    node *temp = head[row];
+    for(int j=0;j<col;j++)
+        temp=temp->next;
+    
+    if(temp->booking==true)
+        cout << "\nThe Ticket is already booked." << endl << endl;
+    else{
+        temp->booking=true;
+        cout<<"\nTicket booked at Seat ["<<row<<"]["<<col<<"]";
+    }
 }
 
 void TICKET::cancel(){
+    int row, col;
 
+    cout << "Enter the Row : ";
+    cin >> row;
+    cout << "Enter the column :";
+    cin >> col;
+    if (row > 9 || col > 6)
+    {
+        cout << "\nInvalid Choice." << endl
+             << endl;
+        return;
+    }
+
+    node *temp = head[row];
+    for (int j = 0; j < col; j++)
+        temp = temp->next;
+
+    if (temp->booking == true)
+        cout << "\nThe Ticket is already booked." << endl << endl;
+    else
+    {
+        temp->booking = false;
+        cout << "\nTicket booked at Seat [" << row << "][" << col << "]";
+    }
 }
 
 int main(){
