@@ -31,6 +31,7 @@ public:
         for(int i=0;i<10;i++){
             for(int j=0;j<7;j++){
                 node *temp=new node();
+                
                 // INITIALISING SEAT CONFIGURATION
                 if(head[i]==NULL){
                     head[i]=temp;
