@@ -74,14 +74,14 @@ void TICKET::available(){
         cout << setw(20) << "ROW -" << setw(3) << i;
         while (temp->next != head[i])
         {
-            if (temp->booking == true)
+            if (temp->booking == false)
                 cout << setw(10) << "A |";
             else
                 cout << setw(10) << "N/A |";
             temp = temp->next;
         }
 
-        if (temp->booking == true)
+        if (temp->booking == false)
             cout << setw(10) << "A |";
         else
             cout << setw(10) << "N/A |";
