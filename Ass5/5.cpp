@@ -63,7 +63,9 @@ public:
 };
 
 void TICKET::available(){
-
+    cout<<"ROW/COL";
+    for(int j=0;j<7;j++)
+        
 }
 
 void TICKET::book(){
