@@ -11,23 +11,65 @@ On demand
 using namespace std;
 
 class node{
-    int booking;
+public:
+    bool booking;
     node *next, *prev;
 };
 
 class TICKET{
-    node *head,*tail;
+    node *(head[10]),*(tail[10]);
 public:
     TICKET()
     {
-        head=tail=NULL;
+        for(int i=0;i<10;i++)
+            head[i]=tail[i]=NULL;
+
+        for(int i=0;i<10;i++){
+            for(int j=0;j<7;j++){
+                node *temp=new node();
+                // INITIALISING SEAT CONFIGURATION
+                if(head[i]==NULL){
+                    head[i]=temp;
+                    tail[i]=temp;
+
+                    head[i]->next=head[i];
+                    head[i]->prev=head[i];
+
+                    tail[i]->next=head[i];
+                    tail[i]->prev=head[i];
+                }
+                else{
+                    node *temp1=head[i];
+
+                    while(temp1->next!=head[i])
+                        temp1=temp1->next;
+                    
+                    temp1->next=temp;
+                    temp->prev = temp1;
+                    temp->next=head[i];
+                    temp=tail[i];
+                    head[i]->prev=tail[i];
+                }
+                
+            }
+        }
     }
     void available();
     void book();
     void cancel();
 };
 
+void TICKET::available(){
 
+}
+
+void TICKET::book(){
+
+}
+
+void TICKET::cancel(){
+
+}
 
 int main(){
     TICKET t;
