@@ -81,7 +81,14 @@ int main()
 
     //ADDING TWO SPARSE MATRICES
     cout << "SUM OF TWO SPARSE MATRIX" << endl;
-    int sum[row1][col1]={0};
+    int sum[row1][col1];
+    for (i = 0; i < row1; i++)
+    {
+        for (j = 0; j < col1; j++)
+        {
+            sum[i][j] = 0;
+        }
+    }
     if(row1==row2 && col1==col2){
         for (i = 0; i < row1; i++)
         {
