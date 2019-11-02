@@ -87,7 +87,7 @@ void TICKET::book(){
         cout << "\nThe Ticket is already booked." << endl << endl;
     else{
         temp->booking=true;
-        cout<<"\nTicket booked at Seat ["<<row<<"]["<<col<<"]";
+        cout<<"\nTicket booked at Seat ["<<row<<"]["<<col<<"]\n\n";
     }
 }
 
@@ -109,12 +109,12 @@ void TICKET::cancel(){
     for (int j = 0; j < col; j++)
         temp = temp->next;
 
-    if (temp->booking == true)
-        cout << "\nThe Ticket is already booked." << endl << endl;
+    if (temp->booking == false)
+        cout << "\nThe Ticket is not booked yet." << endl << endl;
     else
     {
         temp->booking = false;
-        cout << "\nTicket booked at Seat [" << row << "][" << col << "]";
+        cout << "\nTicket canceled at Seat [" << row << "][" << col << "]\n\n";
     }
 }
 
