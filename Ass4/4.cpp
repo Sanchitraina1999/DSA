@@ -40,7 +40,7 @@ public:
     void deleteSecretary();
     void calCount();
     void display();
-    bool displayReverse(); //function is only for passing head as argument to recursive function
+    bool displayReverse(); //function is only for passing head as argument to REV function
     void REV(node *t);
     void sortlist();
     void concatenate(list &l);
