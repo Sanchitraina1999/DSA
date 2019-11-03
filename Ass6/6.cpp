@@ -11,6 +11,9 @@ using namespace std;
 class node
 {
 public:
+    node(){
+        value=0;
+    }
     int value;
     node *next;
 };
