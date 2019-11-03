@@ -106,11 +106,11 @@ void polynomial::add(polynomial &p1)
     node *temp2=head;
     node *temp1=p1.head;
 
-    if(degree==0){
+    if(degree==0){               //head==NULL
         cout << "\nPolynomial 2 is not inputed\n";
         p1.output();
     }
-    else if(p1.degree==0)
+    else if(p1.degree==0)                    //p1.head == NULL
     {
         cout << "\nPolynomial 1 is not inputed\n";
         output();
