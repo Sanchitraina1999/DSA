@@ -11,9 +11,6 @@ using namespace std;
 class node
 {
 public:
-    node(){
-        value=0;
-    }
     int value;
     node *next;
 };
@@ -106,11 +103,11 @@ void polynomial::add(polynomial &p1)
     node *temp2=head;
     node *temp1=p1.head;
 
-    if(degree==0){               //head==NULL
+    if(degree==0){
         cout << "\nPolynomial 2 is not inputed\n";
         p1.output();
     }
-    else if(p1.degree==0)                    //p1.head == NULL
+    else if(p1.degree==0)
     {
         cout << "\nPolynomial 1 is not inputed\n";
         output();
